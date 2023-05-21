@@ -19,7 +19,11 @@ class Plant {
         int getPlantId();
         string getPlantName();        
         string getPlantLoc();
-        int getLabourerCount();
+        int getLaborerCount();
         int getCapacityPerMonth();
+        void setPlantName(string name);        
+        void setPlantLoc(string loc);
+        void setLaborerCount(int laborer);
+        void setCapacityPerMonth(int capacity);
 };
 #endif

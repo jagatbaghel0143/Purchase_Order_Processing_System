@@ -52,7 +52,7 @@ int main() {
                             break;
                         
                         case 2:
-                            
+                            admin.updatePlant();
                             break;
 
                         case 3:
@@ -78,7 +78,7 @@ int main() {
                     break;
                 default:
                     system("clear");
-                    cout<<"\nYou have been logged out successfully! See you sooon again!!\n";
+                    cout<<"\nYou have been logged out successfully! See you soon again!!\n";
                     exit(1);
             }
             getchar();

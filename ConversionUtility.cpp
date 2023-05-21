@@ -11,7 +11,7 @@ using namespace std;
 string ConversionUtility::convertVectorToString(vector<Plant> plants) {
     stringstream ss;
     for (auto plant : plants) {
-        ss << plant.getPlantId() << "," << plant.getPlantName() << "," << plant.getPlantLoc() << "," << plant.getLabourerCount() << "," << plant.getCapacityPerMonth() << "\n";
+        ss << plant.getPlantId() << "," << plant.getPlantName() << "," << plant.getPlantLoc() << "," << plant.getLaborerCount() << "," << plant.getCapacityPerMonth() << "\n";
     }
     return ss.str();
 }

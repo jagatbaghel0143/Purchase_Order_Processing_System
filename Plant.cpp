@@ -29,9 +29,21 @@ string Plant::getPlantName() {
 string Plant::getPlantLoc() {
     return plantLoc;
 }
-int Plant::getLabourerCount() {
+int Plant::getLaborerCount() {
     return laborerCount;
 }
 int Plant::getCapacityPerMonth() {
     return capacityPerMonth;
+}
+void Plant::setPlantName(string name) {
+    plantName = name;
+}        
+void Plant::setPlantLoc(string loc) {
+    plantLoc = loc;
+}
+void Plant::setLaborerCount(int laborer) {
+    laborerCount = laborer;
+}
+void Plant::setCapacityPerMonth(int capacity) {
+    capacityPerMonth = capacity;
 }

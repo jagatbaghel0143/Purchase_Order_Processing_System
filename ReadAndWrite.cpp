@@ -5,15 +5,14 @@
 
 using namespace std;
 
-void ReadAndWrite::writeDataToFile(string data) {
+bool ReadAndWrite::writeDataToFile(string data) {
     ofstream file("plants.txt");
     if(file.is_open()) {
         file << data;
         file.close();
-        cout << "Data written to file";
-    } else {
-        cout << "Unable to open file";
+        return true;
     }
+    return false;
 }
 
 string ReadAndWrite::readDataFromFile() {
