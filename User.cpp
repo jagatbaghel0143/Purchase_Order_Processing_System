@@ -1,15 +1,14 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include <User.hpp>
+#include "User.hpp"
 
 using namespace std;
 
-// User class for creating user
 void User::setLogins(string s1, string s2) {
     u = s1;
     p = s2;
-};
+}
 
 void User::login() {
     system("clear");

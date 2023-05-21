@@ -4,7 +4,6 @@
 #include <vector>
 #include "User.hpp"
 #include "Administration.hpp"
-#include "Plant.hpp"
 
 using namespace std;
 
