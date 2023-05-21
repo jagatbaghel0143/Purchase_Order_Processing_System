@@ -2,6 +2,8 @@
 #include <string>
 #include <cstdlib>
 #include <vector>
+#include "User.hpp"
+#include "Administration.hpp"
 
 using namespace std;
 
