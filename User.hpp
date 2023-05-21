@@ -7,11 +7,13 @@ using namespace std;
 
 class User {
     private:
-        string username, password, u, p;
+        string username;
+        string password;
+        string u;
+        string p;
 
     public:
         void setLogins(string s1, string s2);
         void login();
 };
-
 #endif

@@ -2,6 +2,7 @@
 #define READANDWRITE_HPP
 
 #include <string>
+
 using namespace std;
 
 class ReadAndWrite {
@@ -9,5 +10,4 @@ class ReadAndWrite {
         void writeDataToFile(string data);
         string readDataFromFile();
 };
-
 #endif

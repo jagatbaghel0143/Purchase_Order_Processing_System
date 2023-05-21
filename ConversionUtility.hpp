@@ -11,5 +11,4 @@ class ConversionUtility {
         vector<Plant> convertStringToVector(string data);
         string convertVectorToString(vector<Plant> plants);
 };
-
 #endif
