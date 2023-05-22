@@ -25,49 +25,55 @@ int main() {
             cout<<"\n*****************************************************************************************************";
             cout<<"\n*****************---Welcome to Administration Module---*************************";
             cout<<"\n*****************************************************************************************************";
-            cout<<"\n \t\t 1. Manage Plants";
-            cout<<"\n \t\t 2. Manage Plant Head.";
-            cout<<"\n \t\t 3. View Purchase orders";
-            cout<<"\n \t\t 4. Logout";
-            cout<<"\n\t\t Enter your choice[1,2,3,4]: ";
+            cout<<"\n\t\t1. Manage Plants";
+            cout<<"\n\t\t2. Manage Plant Head.";
+            cout<<"\n\t\t3. View Purchase orders";
+            cout<<"\n\t\t4. Logout";
+            cout<<"\n\tEnter your choice[1,2,3,4]: ";
             cin>>choice;
             switch(choice) {
                 case 1:
-                    system("clear");
-                    cout<<"\n*****************************************************************************************************";
-                    cout<<"\n*****************---Welcome to Plant Management---*************************";
-                    cout<<"\n*****************************************************************************************************";
-                    cout<<"\n \t\t 1. Add New Plant";
-                    cout<<"\n \t\t 2. Update Plant.";
-                    cout<<"\n \t\t 3. Delete Plant";
-                    cout<<"\n \t\t 4. Search Plant";
-                    cout<<"\n \t\t 5. View All Plants";
-                    cout<<"\n \t\t 6. Go Back in Previous menu";
-                    cout<<"\n\t\t Enter your choice[1,2,3,4]: ";
-                    cin>>choice;
-                    switch (choice)
-                    {
-                        case 1:
-                            admin.addPlant();
-                            break;
-                        
-                        case 2:
-                            admin.updatePlant();
-                            break;
+                    while(1) {
+                        system("clear");
+                        cout<<"\n*****************************************************************************************************";
+                        cout<<"\n*****************---Welcome to Plant Management---*************************";
+                        cout<<"\n*****************************************************************************************************";
+                        cout<<"\n\t\t1. Add New Plant";
+                        cout<<"\n\t\t2. Update Plant.";
+                        cout<<"\n\t\t3. Delete Plant";
+                        cout<<"\n\t\t4. Search Plant";
+                        cout<<"\n\t\t5. View All Plants";
+                        cout<<"\n\t\t6. Go Back in Previous menu";
+                        cout<<"\n\tEnter your choice[1,2,3,4,5,6]: ";
+                        cin>>choice;
+                        switch (choice)
+                        {
+                            case 1:
+                                admin.addPlant();
+                                break;
+                            
+                            case 2:
+                                admin.updatePlant();
+                                break;
 
-                        case 3:
-                            break;
+                            case 3:
+                                admin.deletePlant();
+                                break;
 
-                        case 4:
-                            break;
+                            case 4:
+                                break;
 
-                        case 5:
-                            break;
+                            case 5:
+                                break;
 
-                        default:
-                            system("clear");
+                            default:
+                                system("clear");
+                                break;
+                        }
+                        if(choice == 6) {
+                            break;
+                        }
                     }
-                    break;
                 case 2:
                     system("clear");
                     cout<<"Manage Plant Head will Open";
@@ -78,7 +84,7 @@ int main() {
                     break;
                 default:
                     system("clear");
-                    cout<<"\nYou have been logged out successfully! See you soon again!!\n";
+                    cout<<"\n\n\t\tYou have been logged out successfully! See you soon again!!\n\n";
                     exit(1);
             }
             getchar();
