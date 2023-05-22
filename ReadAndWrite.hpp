@@ -7,7 +7,7 @@ using namespace std;
 
 class ReadAndWrite {
     public:
-        void writeDataToFile(string data);
+        bool writeDataToFile(string data);
         string readDataFromFile();
 };
 #endif

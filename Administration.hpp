@@ -9,5 +9,7 @@ using namespace std;
 class Administration : public User {
     public:
         void addPlant();
+        void updatePlant();
+        void deletePlant();
 };
 #endif
