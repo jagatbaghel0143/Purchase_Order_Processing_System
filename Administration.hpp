@@ -11,5 +11,6 @@ class Administration : public User {
         void addPlant();
         void updatePlant();
         void deletePlant();
+        void searchPlant();
 };
 #endif
