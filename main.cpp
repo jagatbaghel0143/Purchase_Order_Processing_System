@@ -41,10 +41,9 @@ int main() {
                         cout<<"\n\t\t1. Add New Plant";
                         cout<<"\n\t\t2. Update Plant.";
                         cout<<"\n\t\t3. Delete Plant";
-                        cout<<"\n\t\t4. Search Plant";
-                        cout<<"\n\t\t5. View All Plants";
-                        cout<<"\n\t\t6. Go Back in Previous menu";
-                        cout<<"\n\tEnter your choice[1,2,3,4,5,6]: ";
+                        cout<<"\n\t\t4. Search and View Plant";
+                        cout<<"\n\t\t5. Go Back in Previous menu";
+                        cout<<"\n\tEnter your choice[1,2,3,4,5]: ";
                         cin>>choice;
                         switch (choice)
                         {
@@ -61,16 +60,14 @@ int main() {
                                 break;
 
                             case 4:
-                                break;
-
-                            case 5:
+                                admin.searchPlant();
                                 break;
 
                             default:
                                 system("clear");
                                 break;
                         }
-                        if(choice == 6) {
+                        if(choice == 5) {
                             break;
                         }
                     }
