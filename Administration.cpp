@@ -62,7 +62,7 @@ void Administration::updatePlant() {
                 cout<<"\n\t\t2. Plant Location: "<<plant.at(i).getPlantLoc();
                 cout<<"\n\t\t3. Laborer Count: "<<plant.at(i).getLaborerCount();
                 cout<<"\n\t\t4. Capacity Per Month: "<<plant.at(i).getCapacityPerMonth();
-                cout<<"\n\t\t5. Exit";
+                cout<<"\n\t\t5. Save";
                 cout<<"\nEnter your choice to update [1,2,3,4,5]: ";
                 cin>>choice;
             
@@ -166,6 +166,49 @@ void Administration::deletePlant() {
         cout << "\n\t\tOpps! No plant exists with this #"<<plantId<<" Id\n\n";
     }
     cout<<"Press ENTER to continue...";
+    cin.ignore();
+    cin.get();
+}
+
+void Administration::searchPlant() {
+    system("clear");
+    string plantNameOrLoc;
+    cout<<"Enter Plant name or location to search OR enter (*) to view all plants: ";
+    cin>>plantNameOrLoc;
+    bool flag = true;
+    string data = readAndWrite.readDataFromFile();
+    vector<Plant> plant = conversionUtility.convertStringToVector(data);
+    if(plant.size() > 0) {
+        if(plantNameOrLoc == "*") {
+            int index = 1;
+            flag = false;
+            for(auto i = plant.begin(); i != plant.end(); ++i, ++index) {
+                cout<<"\t\t" + index << ". Plant Details are as follows:";
+                cout<<"\n\t\tPlant Id: "<<i->getPlantId();
+                cout<<"\n\t\tPlant Name: "<<i->getPlantName();
+                cout<<"\n\t\tPlant Location: "<<i->getPlantLoc();
+                cout<<"\n\t\tLaborer Count: "<<i->getLaborerCount();
+                cout<<"\n\t\tCapacity Per Month: "<<i->getCapacityPerMonth()<<endl<<endl;
+            }
+        } else {
+            for(auto i = plant.begin(); i != plant.end(); ++i) {
+                if(i->getPlantName() == plantNameOrLoc || i->getPlantLoc() == plantNameOrLoc) {
+                    flag = false;
+                    cout<<"\t\tPlant Details are as follows:";
+                    cout<<"\n\t\tPlant Id: "<<i->getPlantId();
+                    cout<<"\n\t\tPlant Name: "<<i->getPlantName();
+                    cout<<"\n\t\tPlant Location: "<<i->getPlantLoc();
+                    cout<<"\n\t\tLaborer Count: "<<i->getLaborerCount();
+                    cout<<"\n\t\tCapacity Per Month: "<<i->getCapacityPerMonth()<<endl<<endl;
+                }
+            }
+
+        }
+    }
+    if(flag) {
+        cout << "\n\t\tOpps! No plant exists with this Name or Location";
+    }
+    cout<<"\n\t\tPress ENTER to continue...";
     cin.ignore();
     cin.get();
 }
