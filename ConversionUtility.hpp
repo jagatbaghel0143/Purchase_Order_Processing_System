@@ -3,12 +3,15 @@
 #include <vector>
 #include <string>
 #include "Plant.hpp"
+#include "PlantHead.hpp"
 
 using namespace std;
 
 class ConversionUtility {
     public:
-        vector<Plant> convertStringToVector(string data);
-        string convertVectorToString(vector<Plant> plants);
+        vector<Plant> convertPlantStringToVector(string data);
+        string convertPlantVectorToString(vector<Plant> plants);
+        vector<PlantHead> convertPlantHeadStringToVector(string data);
+        string convertPlantHeadVectorToString(vector<PlantHead> plantHeads);
 };
 #endif
