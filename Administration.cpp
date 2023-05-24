@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <vector>
 #include "Plant.hpp"
 #include "ConversionUtility.hpp"
@@ -50,18 +51,18 @@ void Administration::updatePlant() {
     bool flag = true, updateStatus = false;
     string data = readAndWrite.readDataFromFile("plants.txt");
     vector<Plant> plant = conversionUtility.convertPlantStringToVector(data);
-    for(int i=0; i<plant.size(); ++i) {
-        if(plant.at(i).getPlantId() == plantId) {
+    for(auto i = plant.begin(); i != plant.end(); ++i) {
+        if(i->getPlantId() == plantId) {
             string name,loc;
             int count, capacity, choice = -1;
             flag = false;
             while(1) {
                 cout<<"\t\tCurrent Plant Details are as follows:";
-                cout<<"\n\t\tPlant Id: "<<plant.at(i).getPlantId();
-                cout<<"\n\t\t1. Plant Name: "<<plant.at(i).getPlantName();
-                cout<<"\n\t\t2. Plant Location: "<<plant.at(i).getPlantLoc();
-                cout<<"\n\t\t3. Laborer Count: "<<plant.at(i).getLaborerCount();
-                cout<<"\n\t\t4. Capacity Per Month: "<<plant.at(i).getCapacityPerMonth();
+                cout<<"\n\t\tPlant Id: "<<i->getPlantId();
+                cout<<"\n\t\t1. Plant Name: "<<i->getPlantName();
+                cout<<"\n\t\t2. Plant Location: "<<i->getPlantLoc();
+                cout<<"\n\t\t3. Laborer Count: "<<i->getLaborerCount();
+                cout<<"\n\t\t4. Capacity Per Month: "<<i->getCapacityPerMonth();
                 cout<<"\n\t\t5. Save";
                 cout<<"\nEnter your choice to update [1,2,3,4,5]: ";
                 cin>>choice;
@@ -70,25 +71,25 @@ void Administration::updatePlant() {
                     case 1:
                         cout<<"\t\tEnter New Plant Name: ";
                         cin>>name;
-                        plant.at(i).setPlantName(name);
+                        i->setPlantName(name);
                         break;
                     
                     case 2:
                         cout<<"\t\tEnter New Plant Location: ";
                         cin>>loc;
-                        plant.at(i).setPlantLoc(loc);
+                        i->setPlantLoc(loc);
                         break;
                     
                     case 3:
                         cout<<"\t\tEnter New Laborer Count: ";
                         cin>>count;
-                        plant.at(i).setLaborerCount(count);
+                        i->setLaborerCount(count);
                         break;
                     
                     case 4:
                         cout<<"\t\tEnter New Capacity Per Month: ";
                         cin>>capacity;
-                        plant.at(i).setCapacityPerMonth(capacity);
+                        i->setCapacityPerMonth(capacity);
                         break;
                     default:
                         break;
