@@ -1,6 +1,5 @@
 .vscode
-a.out
-app
-run.sh
+run
+compile.sh
 plants.txt
 plantHeadDetails.txt
