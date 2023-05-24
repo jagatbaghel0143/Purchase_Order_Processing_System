@@ -33,8 +33,6 @@ void Administration::addPlant() {
     plants.emplace_back(plant);
     data = conversionUtility.convertPlantVectorToString(plants);
     if(readAndWrite.writeDataToFile(data, "plants.txt")) {
-    data = conversionUtility.convertPlantVectorToString(plants);
-    if(readAndWrite.writeDataToFile(data, "plants.txt")) {
         int idd = plant.getPlantId();
         cout<<"\n\tNew manufacturing unit with ID #"<<idd<<" is added successfully!";
     } else {
