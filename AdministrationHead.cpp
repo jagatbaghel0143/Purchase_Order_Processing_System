@@ -40,76 +40,56 @@ void AdministrationHead::addPlantHead() {
 
 void AdministrationHead::updatePlantHead() {
     system("clear");
-    // int plantId;
-    // cout<<"\t\tEnter Plant ID which you want to update: ";
-    // cin>>plantId;
-    // bool flag = true, updateStatus = false;
-    // string data = readAndWrite.readDataFromFile();
-    // vector<Plant> plant = conversionUtility.convertStringToVector(data);
-    // for(int i=0; i<plant.size(); ++i) {
-    //     if(plant.at(i).getPlantId() == plantId) {
-    //         string name,loc;
-    //         int count, capacity, choice = -1;
-    //         flag = false;
-    //         while(1) {
-    //             cout<<"\t\tCurrent Plant Details are as follows:";
-    //             cout<<"\n\t\tPlant Id: "<<plant.at(i).getPlantId();
-    //             cout<<"\n\t\t1. Plant Name: "<<plant.at(i).getPlantName();
-    //             cout<<"\n\t\t2. Plant Location: "<<plant.at(i).getPlantLoc();
-    //             cout<<"\n\t\t3. Laborer Count: "<<plant.at(i).getLaborerCount();
-    //             cout<<"\n\t\t4. Capacity Per Month: "<<plant.at(i).getCapacityPerMonth();
-    //             cout<<"\n\t\t5. Save";
-    //             cout<<"\nEnter your choice to update [1,2,3,4,5]: ";
-    //             cin>>choice;
+    int plantHeadId;
+    cout<<"\t\tEnter Plant Head ID which you want to update: ";
+    cin>>plantHeadId;
+    bool flag = true, updateStatus = false;
+    string data = readAndWrite.readDataFromFile("plantHeadDetails.txt");
+    vector<PlantHead> plantHeads = conversionUtility.convertPlantHeadStringToVector(data);
+    for(auto i = plantHeads.begin(); i != plantHeads.end(); ++i) {
+        if(i->getPlantHeadId() == plantHeadId) {
+            string name,loc;
+            int count, capacity, choice = -1;
+            flag = false;
+            while(1) {
+                cout<<"\t\tCurrent Plant Heaad Details are as follows:";
+                cout<<"\n\t\tPlant Head Id: "<<i->getPlantHeadId();
+                cout<<"\n\t\t1. Plant Head Name: "<<i->getPlantHeadName();
+                cout<<"\n\t\t2. Save";
+                cout<<"\nEnter your choice to update [1,2]: ";
+                cin>>choice;
             
-    //             switch(choice) {
-    //                 case 1:
-    //                     cout<<"\t\tEnter New Plant Name: ";
-    //                     cin>>name;
-    //                     plant.at(i).setPlantName(name);
-    //                     break;
-                    
-    //                 case 2:
-    //                     cout<<"\t\tEnter New Plant Location: ";
-    //                     cin>>loc;
-    //                     plant.at(i).setPlantLoc(loc);
-    //                     break;
-                    
-    //                 case 3:
-    //                     cout<<"\t\tEnter New Laborer Count: ";
-    //                     cin>>count;
-    //                     plant.at(i).setLaborerCount(count);
-    //                     break;
-                    
-    //                 case 4:
-    //                     cout<<"\t\tEnter New Capacity Per Month: ";
-    //                     cin>>capacity;
-    //                     plant.at(i).setCapacityPerMonth(capacity);
-    //                     break;
-    //                 default:
-    //                     break;
-    //             }
-    //             if(choice == 5) {
-    //                 break;
-    //             } else if ((choice > 0)  && (choice < 5)) {
-    //                 updateStatus = true;
-    //             }
-    //         }
-    //         if(updateStatus) {
-    //             if(readAndWrite.writeDataToFile(conversionUtility.convertVectorToString(plant))) {
-    //                 cout<<"\n\t\tPlant details updated successfully!\n\n";
-    //             }else {
-    //             cout<<"\nError while updating plant details...";
-    //             }
-    //         }
-    //     }
-    // }
-    // if(flag) {
-    //     cout << "\n\t\tOpps! No plant exists with this #"<<plantId<<" Id\n\n";
-    // }
-    // cout<<"Press ENTER to continue...";
-    // cin.ignore();
-    // cin.get();
+                switch(choice) {
+                    case 1:
+                        cout<<"\t\tEnter New Plant Head Name: ";
+                        cin>>name;
+                        i->setPlantHeadName(name);
+                        break;
+
+                    default:
+                        break;
+                }
+                if(choice == 2) {
+                    break;
+                } else if ((choice > 0)  && (choice < 5)) {
+                    updateStatus = true;
+                }
+            }
+            if(updateStatus) {
+                if(readAndWrite.writeDataToFile(conversionUtility.convertPlantHeadVectorToString(plantHeads), "plantHeadDetails.txt")) {
+                    cout<<"\n\t\tPlant details updated successfully!\n\n";
+                }else {
+                cout<<"\nError while updating plant details...";
+                }
+            }
+        }
+    }
+    if(flag) {
+        cout << "\n\t\tOpps! No plant exists with this #"<<plantHeadId<<" Id\n\n";
+    }
+    cout<<"Press ENTER to continue...";
+    cin.ignore();
+    cin.get();
 }
 
 void AdministrationHead::deletePlantHead() {
