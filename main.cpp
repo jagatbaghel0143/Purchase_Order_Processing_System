@@ -44,7 +44,7 @@ int main() {
                         cout<<"\n\t\t2. Update Plant.";
                         cout<<"\n\t\t3. Delete Plant";
                         cout<<"\n\t\t4. Search and View Plant";
-                        cout<<"\n\t\t5. Go Back in Previous menu";
+                        cout<<"\n\t\t5. Back";
                         cout<<"\n\tEnter your choice[1,2,3,4,5]: ";
                         cin>>choice;
                         switch (choice)
@@ -83,9 +83,9 @@ int main() {
                         cout<<"\n*****************************************************************************************************";
                         cout<<"\n\t\t1. Add New Plant Head";
                         cout<<"\n\t\t2. Update Plant Head.";
-                        cout<<"\n\t\t3. Delete Plant";
-                        cout<<"\n\t\t4. Go Back in Previous menu";
-                        cout<<"\n\tEnter your choice[1,2,3,4,5]: ";
+                        cout<<"\n\t\t3. Delete Plant Head";
+                        cout<<"\n\t\t4. Back";
+                        cout<<"\n\tEnter your choice[1,2,3,4]: ";
                         cin>>choice;
                         switch (choice)
                         {
@@ -98,7 +98,7 @@ int main() {
                                 break;
 
                             case 3:
-                                adminHead.updatePlantHead();
+                                adminHead.deletePlantHead();
                                 break;
                                 
                             default:
