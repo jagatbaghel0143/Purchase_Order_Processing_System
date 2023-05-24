@@ -23,11 +23,11 @@ void AdministrationHead::addPlantHead() {
     string password;
     password = randomStringGenerator.generateRandomString(LENGTH) ;
     PlantHead plantHead(id, name, password);
-    string data = readAndWrite.readDataFromFile("plantHeadDeatils.txt");
+    string data = readAndWrite.readDataFromFile("plantHeadDetails.txt");
     vector<PlantHead> plantHeads = conversionUtility.convertPlantHeadStringToVector(data);
     plantHeads.emplace_back(plantHead);
     data = conversionUtility.convertPlantHeadVectorToString(plantHeads);
-    if(readAndWrite.writeDataToFile(data, "plantHeadDeatils.txt")) {
+    if(readAndWrite.writeDataToFile(data, "plantHeadDetails.txt")) {
         cout<<"\n\tNew Plant Head with User ID # "<< id <<" and password : " << password <<" is added successfully!";
         cout<<"\n\tPlease Note Your Id and password";
     } else {

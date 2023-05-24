@@ -4,11 +4,13 @@
 #include <vector>
 #include "User.hpp"
 #include "Administration.hpp"
+#include "AdministrationHead.hpp"
 
 using namespace std;
 
 int main() {
     Administration admin;
+    AdministrationHead adminHead;
     int res;
     int choice = -1;
     cout<<"\n*****************************************************************************************************";
@@ -74,6 +76,39 @@ int main() {
                 case 2:
                     system("clear");
                     cout<<"Manage Plant Head will Open";
+                                        while(1) {
+                        system("clear");
+                        cout<<"\n*****************************************************************************************************";
+                        cout<<"\n*****************---Welcome to Plant Head Management---*************************";
+                        cout<<"\n*****************************************************************************************************";
+                        cout<<"\n\t\t1. Add New Plant Head";
+                        cout<<"\n\t\t2. Update Plant Head.";
+                        cout<<"\n\t\t3. Delete Plant";
+                        cout<<"\n\t\t4. Go Back in Previous menu";
+                        cout<<"\n\tEnter your choice[1,2,3,4,5]: ";
+                        cin>>choice;
+                        switch (choice)
+                        {
+                            case 1:
+                                adminHead.addPlantHead();
+                                break;
+                            
+                            case 2:
+                                adminHead.updatePlantHead();
+                                break;
+
+                            case 3:
+                                adminHead.updatePlantHead();
+                                break;
+                                
+                            default:
+                                system("clear");
+                                break;
+                        }
+                        if(choice == 4) {
+                            break;
+                        }
+                    }
                     break;
                 case 3:
                     system("clear");
