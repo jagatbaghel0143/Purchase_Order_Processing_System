@@ -94,54 +94,51 @@ void AdministrationHead::updatePlantHead() {
 
 void AdministrationHead::deletePlantHead() {
     system("clear");
-    // int plantId;
-    // cout<<"Enter Plant ID which you want to delete: ";
-    // cin>>plantId;
-    // bool flag = true, updateStatus = false;
-    // string data = readAndWrite.readDataFromFile();
-    // vector<Plant> plant = conversionUtility.convertStringToVector(data);
-    // for(auto i = plant.begin(); i != plant.end(); ++i) {
-    //     if(i->getPlantId() == plantId) {
-    //         int choice = -1;
-    //         flag = false;
-    //         cout<<"\t\tPlant Details are as follows:";
-    //         cout<<"\n\t\tPlant Id: "<<i->getPlantId();
-    //         cout<<"\n\t\tPlant Name: "<<i->getPlantName();
-    //         cout<<"\n\t\tPlant Location: "<<i->getPlantLoc();
-    //         cout<<"\n\t\tLaborer Count: "<<i->getLaborerCount();
-    //         cout<<"\n\t\tCapacity Per Month: "<<i->getCapacityPerMonth();
-    //         cout<<"\n\n\t\tAre you sure you want to delete it...";
-    //         cout<<"\n\t\t1. YES";
-    //         cout<<"\n\t\t2. NO";
-    //         cout<<"\nEnter your choice to update [1,2]: ";
-    //         cin>>choice;
+    int plantId;
+    cout<<"Enter Plant Head ID which you want to delete: ";
+    cin>>plantId;
+    bool flag = true, updateStatus = false;
+    string data = readAndWrite.readDataFromFile("plantHeadDetails.txt");
+    vector<PlantHead> plantHeads = conversionUtility.convertPlantHeadStringToVector(data);
+    for(auto i = plantHeads.begin(); i != plantHeads.end(); ++i) {
+        if(i->getPlantHeadId() == plantId) {
+            int choice = -1;
+            flag = false;
+            cout<<"\t\tPlant Head Details are as follows:";
+            cout<<"\n\t\tPlant Head Id: "<<i->getPlantHeadId();
+            cout<<"\n\t\tPlant Head Name: "<<i->getPlantHeadName();
+            cout<<"\n\n\t\tAre you sure you want to delete it...";
+            cout<<"\n\t\t1. YES";
+            cout<<"\n\t\t2. NO";
+            cout<<"\nEnter your choice to update [1,2]: ";
+            cin>>choice;
 
-    //         switch(choice) {
-    //             case 1:
-    //                 plant.erase(i);
-    //                 break;
-    //             default:
-    //                 break;
-    //         }
-    //         if(choice == 2) {
-    //             break;
-    //         } else if ((choice > 0)  && (choice < 2)) {
-    //             updateStatus = true;
-    //         }
-    //         if(updateStatus) {
-    //             if(readAndWrite.writeDataToFile(conversionUtility.convertVectorToString(plant))) {
-    //                 cout<<"\n\t\tPlant with id #"<<plantId<<" deleted successfully!\n\n";
-    //             }else {
-    //             cout<<"\nError while deleting plant details...";
-    //             }
-    //         }
-    //         break;
-    //     }
-    // }
-    // if(flag) {
-    //     cout << "\n\t\tOpps! No plant exists with this #"<<plantId<<" Id\n\n";
-    // }
-    // cout<<"Press ENTER to continue...";
-    // cin.ignore();
-    // cin.get();
+            switch(choice) {
+                case 1:
+                    plantHeads.erase(i);
+                    break;
+                default:
+                    break;
+            }
+            if(choice == 2) {
+                break;
+            } else if ((choice > 0)  && (choice < 2)) {
+                updateStatus = true;
+            }
+            if(updateStatus) {
+                if(readAndWrite.writeDataToFile(conversionUtility.convertPlantHeadVectorToString(plantHeads), "plantHeadDetails.txt")) {
+                    cout<<"\n\t\tPlant with id #"<<plantId<<" deleted successfully!\n\n";
+                }else {
+                cout<<"\nError while deleting plant details...";
+                }
+            }
+            break;
+        }
+    }
+    if(flag) {
+        cout << "\n\t\tOpps! No plant exists with this #"<<plantId<<" Id\n\n";
+    }
+    cout<<"Press ENTER to continue...";
+    cin.ignore();
+    cin.get();
 }
