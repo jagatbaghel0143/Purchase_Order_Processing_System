@@ -27,11 +27,11 @@ void Administration::addPlant() {
     cout<<"\t\tEnter Capacity Per Month: ";
     cin>>capacity;
     Plant plant(id, name, loc, laborers, capacity);
-    string data = readAndWrite.readDataFromFile();
-    vector<Plant> plants = conversionUtility.convertStringToVector(data);
+    string data = readAndWrite.readDataFromFile("plants.txt");
+    vector<Plant> plants = conversionUtility.convertPlantStringToVector(data);
     plants.emplace_back(plant);
-    data = conversionUtility.convertVectorToString(plants);
-    if(readAndWrite.writeDataToFile(data)) {
+    data = conversionUtility.convertPlantVectorToString(plants);
+    if(readAndWrite.writeDataToFile(data, "plants.txt")) {
         int idd = plant.getPlantId();
         cout<<"\n\tNew manufacturing unit with ID #"<<idd<<" is added successfully!";
     } else {
@@ -48,8 +48,8 @@ void Administration::updatePlant() {
     cout<<"\t\tEnter Plant ID which you want to update: ";
     cin>>plantId;
     bool flag = true, updateStatus = false;
-    string data = readAndWrite.readDataFromFile();
-    vector<Plant> plant = conversionUtility.convertStringToVector(data);
+    string data = readAndWrite.readDataFromFile("plants.txt");
+    vector<Plant> plant = conversionUtility.convertPlantStringToVector(data);
     for(int i=0; i<plant.size(); ++i) {
         if(plant.at(i).getPlantId() == plantId) {
             string name,loc;
@@ -100,7 +100,7 @@ void Administration::updatePlant() {
                 }
             }
             if(updateStatus) {
-                if(readAndWrite.writeDataToFile(conversionUtility.convertVectorToString(plant))) {
+                if(readAndWrite.writeDataToFile(conversionUtility.convertPlantVectorToString(plant), "plants.txt")) {
                     cout<<"\n\t\tPlant details updated successfully!\n\n";
                 }else {
                 cout<<"\nError while updating plant details...";
@@ -122,8 +122,8 @@ void Administration::deletePlant() {
     cout<<"Enter Plant ID which you want to delete: ";
     cin>>plantId;
     bool flag = true, updateStatus = false;
-    string data = readAndWrite.readDataFromFile();
-    vector<Plant> plant = conversionUtility.convertStringToVector(data);
+    string data = readAndWrite.readDataFromFile("plants.txt");
+    vector<Plant> plant = conversionUtility.convertPlantStringToVector(data);
     for(auto i = plant.begin(); i != plant.end(); ++i) {
         if(i->getPlantId() == plantId) {
             int choice = -1;
@@ -153,7 +153,7 @@ void Administration::deletePlant() {
                 updateStatus = true;
             }
             if(updateStatus) {
-                if(readAndWrite.writeDataToFile(conversionUtility.convertVectorToString(plant))) {
+                if(readAndWrite.writeDataToFile(conversionUtility.convertPlantVectorToString(plant),"plants.txt")) {
                     cout<<"\n\t\tPlant with id #"<<plantId<<" deleted successfully!\n\n";
                 }else {
                 cout<<"\nError while deleting plant details...";
@@ -176,8 +176,8 @@ void Administration::searchPlant() {
     cout<<"Enter Plant name or location to search OR enter (*) to view all plants: ";
     cin>>plantNameOrLoc;
     bool flag = true;
-    string data = readAndWrite.readDataFromFile();
-    vector<Plant> plant = conversionUtility.convertStringToVector(data);
+    string data = readAndWrite.readDataFromFile("plants.txt");
+    vector<Plant> plant = conversionUtility.convertPlantStringToVector(data);
     if(plant.size() > 0) {
         if(plantNameOrLoc == "*") {
             int index = 1;
