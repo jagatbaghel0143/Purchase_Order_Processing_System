@@ -4,6 +4,7 @@
 #include <string>
 #include "Plant.hpp"
 #include "PlantHead.hpp"
+#include "Client.hpp"
 
 using namespace std;
 
@@ -13,5 +14,7 @@ class ConversionUtility {
         string convertPlantVectorToString(vector<Plant> plants);
         vector<PlantHead> convertPlantHeadStringToVector(string data);
         string convertPlantHeadVectorToString(vector<PlantHead> plantHeads);
+        vector<Client> convertClientStringToVector(string data);
+        string convertClientVectorToString(vector<Client> clients);
 };
 #endif

@@ -3,33 +3,40 @@
 #include <vector>
 #include "ConversionUtility.hpp"
 #include "ReadAndWrite.hpp"
-#include "AdministrationHead.hpp"
+#include "ClientManagement.hpp"
 #include "RandomStringGenerator.hpp"
-#include "PlantHead.hpp"
+#include "Client.hpp"
 
 using namespace std;
 
 static ConversionUtility conversionUtility;
 static ReadAndWrite readAndWrite;
-RandomStringGenerator randomStringGenerator;
+static RandomStringGenerator randomStringGenerator;
 
-void AdministrationHead::addPlantHead() {
+void ClientManagement::addClient() {
     system("clear");
     const int LENGTH = 10;
-    int id = time(nullptr);
-    string name;
-    cout<<"\n\t\tEnter Plant Head Name: ";
-    cin>>name;
-    string password;
-    password = randomStringGenerator.generateRandomString(LENGTH) ;
-    PlantHead plantHead(id, name, password, false, false);
-    string data = readAndWrite.readDataFromFile("plantHeadDetails.txt");
-    vector<PlantHead> plantHeads = conversionUtility.convertPlantHeadStringToVector(data);
-    plantHeads.emplace_back(plantHead);
-    data = conversionUtility.convertPlantHeadVectorToString(plantHeads);
-    if(readAndWrite.writeDataToFile(data, "plantHeadDetails.txt")) {
-        cout<<"\n\tNew Plant Head with User ID # "<< id <<" and password : " << password <<" is added successfully!";
-        cout<<"\n\tPlease Note Your Id and password";
+    int clientID = time(nullptr);
+    long clientNumber;
+    string clientName, clientLoc, primaryBusiness, clientPassword;
+    bool isVerified, isloggedIn, isApprovedByAdmin;
+    cout<<"\t\t1. Enter Name: ";
+    std::cin>>clientName;
+    cout<<"\t\t2. Enter Location: ";
+    std::cin>>clientLoc;
+    cout<<"\t\t3. Enter Primary Business: ";
+    std::cin>>primaryBusiness;
+    cout<<"\t\t4. Enter Contact Number: ";
+    std::cin>>clientNumber;
+    clientPassword = randomStringGenerator.generateRandomString(LENGTH) ;
+    Client client(clientID, clientNumber, clientName, clientLoc, primaryBusiness, clientPassword, "false", "false", "false");
+    string data = readAndWrite.readDataFromFile("clientDetails.txt");
+    vector<Client> clients = conversionUtility.convertClientStringToVector(data);
+    clients.emplace_back(client);
+    data = conversionUtility.convertClientVectorToString(clients);
+    if(readAndWrite.writeDataToFile(data, "clientDetails.txt")) {
+        cout<<"\n\tNew Plant Head with User ID # "<< clientID <<" and password : " << clientPassword <<" is added successfully!";
+        cout<<"\n\tPlease Note Your Id and password and you will be able to login after admin approval";
     } else {
         cout<<"\n\t\tError while adding new plant";
     }
@@ -38,7 +45,7 @@ void AdministrationHead::addPlantHead() {
     cin.get();
 }
 
-void AdministrationHead::updatePlantHead() {
+void ClientManagement::updateClient() {
     system("clear");
     int plantHeadId;
     cout<<"\t\tEnter Plant Head ID which you want to update: ";
@@ -92,7 +99,7 @@ void AdministrationHead::updatePlantHead() {
     cin.get();
 }
 
-void AdministrationHead::deletePlantHead() {
+void ClientManagement::deleteClient() {
     system("clear");
     int plantId;
     cout<<"Enter Plant Head ID which you want to delete: ";
