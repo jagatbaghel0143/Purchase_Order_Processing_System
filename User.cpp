@@ -46,22 +46,19 @@ void User::headLogin(string filename) {
     std::cin>>password;
     bool changePassword = false, isCredentialsCorrect = false;
     string data = readAndWrite.readDataFromFile(filename);
-    std::cout<<data;
     vector<PlantHead> heads = conversionUtility.convertPlantHeadStringToVector(data);
     for(auto i = heads.begin(); i != heads.end(); ++i) {
         if(username == to_string(i->getPlantHeadId()) && password == i->getPlantHeadPassword()) {
             isCredentialsCorrect = true;
-            std::cout<<i->getPlantHeadLoggedIn();
-            std::cout<<i->getPlantHeadIsVerified();
-            i->setPlantHeadLoggedIn(true);
-            if(!i->getPlantHeadIsVerified()) {
+            if(i->getPlantHeadIsVerified() == "false") {
                 std::cout<<"\n \t\tPlease change you password!";
                 std::cout<<"\n \t\tEnter New Password: ";
                 std::cin>>password;
                 i->setPlantHeadPassword(password);
-                i->setPlantHeadIsVerified(true);
+                i->setPlantHeadIsVerified("true");
                 changePassword = true;
             }
+            i->setPlantHeadLoggedIn("true");
             break;
         }
     }
@@ -100,12 +97,9 @@ void User::clientLogin(string filename) {
     std::cin>>password;
     bool changePassword = false, isCredentialsCorrect = false;
     string data = readAndWrite.readDataFromFile(filename);
-    std::cout<<data;
     vector<Client> clients = conversionUtility.convertClientStringToVector(data);
     for(auto i = clients.begin(); i != clients.end(); ++i) {
-        std::cout<<"\n"<<i->isClientApprovedByAdmin();
         if(username == to_string(i->getClientID()) && password == i->getClientPassword()) {
-            isCredentialsCorrect = true;
             if(i->isClientApprovedByAdmin() == "true") {
                 if(i->isClientVerified() == "false") {
                     std::cout<<"\n \t\tPlease change you password!";
@@ -115,6 +109,11 @@ void User::clientLogin(string filename) {
                     i->setClientVerified("true");
                     changePassword = true;
                 }
+            } else {
+                cout<<"\n\t\t Your account is NOT approved by Admin till now!";
+            }
+            if((i->isClientApprovedByAdmin() == "true") && (i->isClientVerified() == "true")){
+                isCredentialsCorrect = true;
             }
             break;
         }
@@ -123,13 +122,18 @@ void User::clientLogin(string filename) {
         data = conversionUtility.convertClientVectorToString(clients);
         if(readAndWrite.writeDataToFile(data,"clientDetails.txt")) {
             std::cout<<"\t\tYou Password changed successfully!\n";
+            std::cout<<"\n\t\t Press ENTER to continue...";
+            std::cin.ignore();
+            std::cin.get();
         } else {
             std::cout<<"\t\tError occurred while changing password";
+            std::cout<<"\n\t\t Press ENTER to continue...";
+            std::cin.ignore();
+            std::cin.get();
         }
-    }
-    if(isCredentialsCorrect) {
+    } else if(isCredentialsCorrect) {
         data = conversionUtility.convertClientVectorToString(clients);
-        if(readAndWrite.writeDataToFile(data,"plantHeadDetails.txt")) {
+        if(readAndWrite.writeDataToFile(data,"clientDetails.txt")) {
             std::cout<<"\t\tCongratulations!! You have successfully logged into the System!\n";
         } else {
             std::cout<<"\t\tError occurred while logging";
@@ -141,6 +145,6 @@ void User::clientLogin(string filename) {
         std::cout<<"\n \t\tAccess Denied! Unauthorized credentials!"<<"\n \t\t Press ENTER to try again...";
         std::cin.ignore();
         std::cin.get();
-        headLogin(filename);
+        clientLogin(filename);
     }
 }

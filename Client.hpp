@@ -26,10 +26,10 @@ class Client : public User {
         string isClientApprovedByAdmin();
         void setClientID(int ID);
         void setClientNumber(long number);
-        void setClientName(std::string& name);
-        void setClientLocation(std::string& location);
-        void setPrimaryBusiness(std::string& business);
-        void setClientPassword(std::string& password);
+        void setClientName(std::string name);
+        void setClientLocation(std::string location);
+        void setPrimaryBusiness(std::string business);
+        void setClientPassword(std::string password);
         void setClientVerified(string verified);
         void setClientLoggedIn(string loggedIn);
         void setClientApprovedByAdmin(string approved);

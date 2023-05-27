@@ -53,14 +53,13 @@ vector<PlantHead> ConversionUtility::convertPlantHeadStringToVector(string data)
     while (getline(ss, line)) {
         stringstream lineStream(line);
         int id;
-        string name, password;
-        bool isLoggedIn, isVerified;
+        string name, password, isLoggedIn, isVerified;
         lineStream >> id;
         lineStream.ignore();
         getline(lineStream, name, ',');
         getline(lineStream, password, ',');
-        lineStream >> isVerified;
-        lineStream >> isLoggedIn;
+        getline(lineStream, isVerified, ',');
+        getline(lineStream, isLoggedIn, ',');
         plantHeads.emplace_back(id, name, password, isLoggedIn, isVerified);
     }
     return plantHeads;
@@ -84,6 +83,7 @@ vector<Client> ConversionUtility::convertClientStringToVector(string data) {
         long clientNumber;
         string clientName, clientLoc, primaryBusiness, clientPassword, isVerified, isloggedIn, isApprovedByAdmin;
         lineStream >> clientID;
+        lineStream.ignore();
         lineStream >> clientNumber;
         lineStream.ignore();
         getline(lineStream, clientName, ',');

@@ -5,7 +5,7 @@
 using namespace std;
 
 // Plant class for managing plants
-PlantHead::PlantHead(int id, string name, string password, bool isVerified, bool loggedIn) {
+PlantHead::PlantHead(int id, string name, string password, string isVerified, string loggedIn) {
     plantHeadId = id;
     plantHeadName = name;
     plantHeadPassword = password;
@@ -23,10 +23,10 @@ int PlantHead::getPlantHeadId() {
 string PlantHead::getPlantHeadName() {
     return plantHeadName;
 }
-bool PlantHead::getPlantHeadIsVerified() {
+string PlantHead::getPlantHeadIsVerified() {
     return plantHeadIsVerified;
 }    
-bool PlantHead::getPlantHeadLoggedIn() {
+string PlantHead::getPlantHeadLoggedIn() {
     return plantHeadLoggedIn;
 }    
 string PlantHead::getPlantHeadPassword() {
@@ -38,9 +38,9 @@ void PlantHead::setPlantHeadName(string name) {
 void PlantHead::setPlantHeadPassword(string password) {
     plantHeadPassword = password;
 }
-void PlantHead::setPlantHeadLoggedIn(bool loggedIn) {
+void PlantHead::setPlantHeadLoggedIn(string loggedIn) {
     plantHeadLoggedIn = loggedIn;
 }
-void PlantHead::setPlantHeadIsVerified(bool isVerified) {
+void PlantHead::setPlantHeadIsVerified(string isVerified) {
     plantHeadIsVerified = isVerified;
 }

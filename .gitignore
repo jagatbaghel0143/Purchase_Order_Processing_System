@@ -4,3 +4,5 @@ compile.sh
 plants.txt
 plantHeadDetails.txt
 clientDetails.txt
+debug.sh
+run.out
