@@ -68,7 +68,7 @@ vector<PlantHead> ConversionUtility::convertPlantHeadStringToVector(string data)
 string ConversionUtility::convertClientVectorToString(vector<Client> clients) {
     stringstream ss;
     for (auto client : clients) {
-        ss << client.getClientID() << "," << client.getClientNumber() << "," << client.getClientName()<<","<< client.getClientLocation()<<","<<client.getPrimaryBusiness()<<","<<client.getClientPassword()<<","<<client.isClientVerified()<<","<<client.isClientApprovedByAdmin()<<","<<client.isClientLoggedIn()<<"\n";
+        ss << client.getClientID() << "," << client.getClientNumber() << "," << client.getClientName()<<","<< client.getClientLocation()<<","<<client.getPrimaryBusiness()<<","<<client.getClientPassword()<<","<<client.isClientApprovedByAdmin()<<","<<client.isClientVerified()<<","<<client.isClientLoggedIn()<<"\n";
     }
     return ss.str();
 }

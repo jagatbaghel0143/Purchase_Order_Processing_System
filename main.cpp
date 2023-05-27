@@ -186,7 +186,8 @@ int main() {
             std::cout<<"\n*****************************************************************************************************";
             std::cout<<"\n\t\t1. Register";
             std::cout<<"\n\t\t2. Login";
-            std::cout<<"\n\t\t3. Back";
+            std::cout<<"\n\t\t3. Check Account Status";
+            std::cout<<"\n\t\t4. Back";
             std::cout<<"\n\tEnter your choice[1,2,3]: ";
             int clientChoice = -1;
             std::cin >> clientChoice;
@@ -198,6 +199,10 @@ int main() {
 
                 case 2:
                     clientManagement.clientLogin("clientDetails.txt");
+                    break;
+
+                case 3:
+                    clientManagement.checkStatus();
                     break;
 
                 default:

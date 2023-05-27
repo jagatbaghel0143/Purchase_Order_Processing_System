@@ -109,8 +109,10 @@ void User::clientLogin(string filename) {
                     i->setClientVerified("true");
                     changePassword = true;
                 }
-            } else {
-                cout<<"\n\t\t Your account is NOT approved by Admin till now!";
+            } else if(i->isClientApprovedByAdmin() == "pend"){
+                std::cout<<"\n\t\tYour account is NOT approved by Admin till now!";
+            } else if(i->isClientApprovedByAdmin() == "false"){
+                std::cout<<"\n\t\tSorry! Your account is denied by Admin!";
             }
             if((i->isClientApprovedByAdmin() == "true") && (i->isClientVerified() == "true")){
                 isCredentialsCorrect = true;
@@ -122,14 +124,8 @@ void User::clientLogin(string filename) {
         data = conversionUtility.convertClientVectorToString(clients);
         if(readAndWrite.writeDataToFile(data,"clientDetails.txt")) {
             std::cout<<"\t\tYou Password changed successfully!\n";
-            std::cout<<"\n\t\t Press ENTER to continue...";
-            std::cin.ignore();
-            std::cin.get();
         } else {
             std::cout<<"\t\tError occurred while changing password";
-            std::cout<<"\n\t\t Press ENTER to continue...";
-            std::cin.ignore();
-            std::cin.get();
         }
     } else if(isCredentialsCorrect) {
         data = conversionUtility.convertClientVectorToString(clients);
@@ -138,13 +134,14 @@ void User::clientLogin(string filename) {
         } else {
             std::cout<<"\t\tError occurred while logging";
         }
-        std::cout<<"\n\t\t Press ENTER to continue...";
-        std::cin.ignore();
-        std::cin.get();
-    } else {
-        std::cout<<"\n \t\tAccess Denied! Unauthorized credentials!"<<"\n \t\t Press ENTER to try again...";
+    } else if(!isCredentialsCorrect){
+        std::cout<<"\n\t\tAccess Denied! Unauthorized credentials!";
+        std::cout<<"\n\t\t Press ENTER to try again...";
         std::cin.ignore();
         std::cin.get();
         clientLogin(filename);
     }
+    std::cout<<"\n\t\t Press ENTER...";
+    std::cin.ignore();
+    std::cin.get();
 }
