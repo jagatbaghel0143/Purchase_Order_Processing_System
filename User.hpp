@@ -14,6 +14,8 @@ class User {
 
     public:
         void setLogins(string s1, string s2);
-        void login();
+        void adminLogin();
+        void headLogin(string filename);
+        void clientLogin(string filename);
 };
 #endif

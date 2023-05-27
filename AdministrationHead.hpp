@@ -2,7 +2,6 @@
 #define ADMINISTRATIONHEAD_HPP
 
 #include "User.hpp"
-#include "ReadAndWrite.hpp"
 
 using namespace std;
 
