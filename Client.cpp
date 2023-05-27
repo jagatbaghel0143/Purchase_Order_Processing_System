@@ -61,19 +61,19 @@ void Client::setClientNumber(long number) {
     clientNumber = number;
 }
 
-void Client::setClientName(std::string& name) {
+void Client::setClientName(std::string name) {
     clientName = name;
 }
 
-void Client::setClientLocation(std::string& location) {
+void Client::setClientLocation(std::string location) {
     clientLoc = location;
 }
 
-void Client::setPrimaryBusiness(std::string& business) {
+void Client::setPrimaryBusiness(std::string business) {
     primaryBusiness = business;
 }
 
-void Client::setClientPassword(std::string& password) {
+void Client::setClientPassword(std::string password) {
     clientPassword = password;
 }
 

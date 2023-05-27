@@ -16,6 +16,8 @@ class User {
         void setLogins(string s1, string s2);
         void adminLogin();
         void headLogin(string filename);
+        // void headLogout(string filename);
         void clientLogin(string filename);
+        // void clientLogout(string filename);
 };
 #endif

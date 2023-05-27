@@ -22,7 +22,7 @@ void AdministrationHead::addPlantHead() {
     cin>>name;
     string password;
     password = randomStringGenerator.generateRandomString(LENGTH) ;
-    PlantHead plantHead(id, name, password, false, false);
+    PlantHead plantHead(id, name, password, "false", "false");
     string data = readAndWrite.readDataFromFile("plantHeadDetails.txt");
     vector<PlantHead> plantHeads = conversionUtility.convertPlantHeadStringToVector(data);
     plantHeads.emplace_back(plantHead);

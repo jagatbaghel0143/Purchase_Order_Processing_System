@@ -8,22 +8,19 @@ using namespace std;
 class PlantHead {
     private:
         int plantHeadId;
-        string plantHeadName;
-        string plantHeadPassword;
-        bool plantHeadIsVerified;
-        bool plantHeadLoggedIn;
+        string plantHeadName, plantHeadPassword, plantHeadIsVerified, plantHeadLoggedIn;
 
     public:
-        PlantHead(int id, string name, string password, bool isVerified, bool loggedIn);
+        PlantHead(int id, string name, string password, string isVerified, string loggedIn);
         void getPlantHead();
         int getPlantHeadId();
         string getPlantHeadName();
         string getPlantHeadPassword();
-        bool getPlantHeadIsVerified();
-        bool getPlantHeadLoggedIn();
+        string getPlantHeadIsVerified();
+        string getPlantHeadLoggedIn();
         void setPlantHeadName(string name);
         void setPlantHeadPassword(string password);
-        void setPlantHeadIsVerified(bool isVerified);
-        void setPlantHeadLoggedIn(bool loggedIn);
+        void setPlantHeadIsVerified(string isVerified);
+        void setPlantHeadLoggedIn(string loggedIn);
 };
 #endif
