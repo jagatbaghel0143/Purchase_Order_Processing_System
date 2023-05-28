@@ -188,7 +188,7 @@ int main() {
             std::cout<<"\n\t\t2. Login";
             std::cout<<"\n\t\t3. Check Account Status";
             std::cout<<"\n\t\t4. Back";
-            std::cout<<"\n\tEnter your choice[1,2,3]: ";
+            std::cout<<"\n\tEnter your choice[1,2,3,4]: ";
             int clientChoice = -1;
             std::cin >> clientChoice;
 
@@ -199,6 +199,7 @@ int main() {
 
                 case 2:
                     clientManagement.clientLogin("clientDetails.txt");
+                    clientManagement.activityClient();
                     break;
 
                 case 3:
@@ -209,12 +210,12 @@ int main() {
                     break;
 
             }
-            if(clientChoice == 3) {
+            if(clientChoice == 4) {
                 break;
             }
         }
         std::cin.ignore();            
-        getchar();
+        std::cin.get();
     }
     return 0;
 }

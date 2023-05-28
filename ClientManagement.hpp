@@ -11,5 +11,6 @@ class ClientManagement : public User {
         void updateClient();
         void deleteClient();
         void checkStatus();
+        void activityClient();
 };
 #endif
