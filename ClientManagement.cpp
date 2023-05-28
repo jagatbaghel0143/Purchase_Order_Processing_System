@@ -170,6 +170,7 @@ void ClientManagement::checkStatus() {
             break;
         }
     }
+    std::cout<<"Press ENTER to continue...";
     std::cin.ignore();
     std::cin.get();
 }
@@ -197,7 +198,7 @@ void ClientManagement::activityClient() {
                 break;
 
             default:
-                std::cout<<"\t\tYou have been logged out successfully!";
+                std::cout<<"\n\t\tLogged out successfully! See you soon again!\n";
                 break;
         }
         if(choice == 3) {
