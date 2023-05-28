@@ -88,10 +88,10 @@ int main() {
                         std::cout<<"\n\t\t************************************************";
                         std::cout<<"\n\t\t*        Welcome to Plant Head Management      *";
                         std::cout<<"\n\t\t************************************************";
-                        std::cout<<"\n\t\t*1. Add New Plant Head                         *";
-                        std::cout<<"\n\t\t*2. Update Plant Head.                         *";
-                        std::cout<<"\n\t\t*3. Delete Plant Head                          *";
-                        std::cout<<"\n\t\t*4. Back                                       *";
+                        std::cout<<"\n\t\t*        1. Add New Plant Head                 *";
+                        std::cout<<"\n\t\t*        2. Update Plant Head.                 *";
+                        std::cout<<"\n\t\t*        3. Delete Plant Head                  *";
+                        std::cout<<"\n\t\t*        4. Back                               *";
                         std::cout<<"\n\t\t************************************************";
                         std::cout<<"\n\tEnter your choice[1,2,3,4]: ";
                         std::cin>>choice;
@@ -130,7 +130,7 @@ int main() {
 
                 default:
                     system("clear");
-                    std::cout<<"\n\n\t\tYou have been logged out successfully! See you soon again!!\n\n";
+                    std::cout<<"\n\n\t\tLogged out successfully! See you soon again!!\n\n";
                     exit(1);
             }
         }
@@ -175,15 +175,13 @@ int main() {
 
                 default:
                     system("clear");
-                    std::cout<<"\n\n\t\tYou have been logged out successfully! See you soon again!!\n\n";
+                    std::cout<<"\nt\tLogged out successfully! See you soon again!!\n\n";
                     break;
             }
             if(choice == 6) {
                 break;
             }
         }
-        std::cin.ignore();
-        getchar();
     } else if (res == 3) {
         ClientManagement clientManagement;
         while(1) {
@@ -196,7 +194,7 @@ int main() {
             std::cout<<"\n\t\t*        3. Check Account Status               *";
             std::cout<<"\n\t\t*        4. Back                               *";
             std::cout<<"\n\t\t************************************************";
-            std::cout<<"\n\tEnter your choice[1,2,3,4]: ";
+            std::cout<<"\n\t\tEnter your choice[1,2,3,4]: ";
             int clientChoice = -1;
             std::cin >> clientChoice;
 
@@ -222,8 +220,6 @@ int main() {
                 break;
             }
         }
-        std::cin.ignore();            
-        std::cin.get();
     }
     return 0;
 }

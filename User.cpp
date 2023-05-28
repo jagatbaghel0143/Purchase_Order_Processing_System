@@ -17,19 +17,19 @@ void User::setLogins(string s1, string s2) {
 
 void User::adminLogin() {
     system("clear");
-    std::cout<<"\n \t\tEnter your username and password to continue!";
+    std::cout<<"\n \t\tEnter Admin username and password to continue!";
     std::cout<<"\n \t\t USERNAME: ";
     std::cin>>username;
     std::cout<<"\t\t PASSWORD: ";
     std::cin>>password;
     if(u == username && p == password) {
-        std::cout<<"\n\t Congratulations!! You have successfully logged into the System!";
+        std::cout<<"\n\t Congratulations! Logged into the system successfully!";
         std::cout<<"\n\t\t Press ENTER to continue...";
         std::cin.ignore();
         std::cin.get();
 
     } else {
-        std::cout<<"\n \t\tAccess Denied! Unauthorized credentials!"<<"\n \t\t Press ENTER to try again...";
+        std::cout<<"\n\t\tAccess Denied! Unauthorized credentials!"<<"\n\t\tPress ENTER to try again...";
         std::cin.ignore();
         std::cin.get();
         adminLogin();
@@ -39,10 +39,10 @@ void User::adminLogin() {
 
 void User::headLogin(string filename) {
     system("clear");
-    std::cout<<"\n \t\tEnter your username and password to continue!";
-    std::cout<<"\n \t\t USERNAME: ";
+    std::cout<<"\n\t\tEnter Plant Head username and password to continue!";
+    std::cout<<"\n\t\tUSERNAME: ";
     std::cin>>username;
-    std::cout<<"\t\t PASSWORD: ";
+    std::cout<<"\t\tPASSWORD: ";
     std::cin>>password;
     bool changePassword = false, isCredentialsCorrect = false;
     string data = readAndWrite.readDataFromFile(filename);
@@ -51,8 +51,8 @@ void User::headLogin(string filename) {
         if(username == to_string(i->getPlantHeadId()) && password == i->getPlantHeadPassword()) {
             isCredentialsCorrect = true;
             if(i->getPlantHeadIsVerified() == "false") {
-                std::cout<<"\n \t\tPlease change you password!";
-                std::cout<<"\n \t\tEnter New Password: ";
+                std::cout<<"\n\t\tPlease change you password!";
+                std::cout<<"\n\t\tEnter New Password: ";
                 std::cin>>password;
                 i->setPlantHeadPassword(password);
                 i->setPlantHeadIsVerified("true");
@@ -65,7 +65,7 @@ void User::headLogin(string filename) {
     if(isCredentialsCorrect && changePassword) {
         data = conversionUtility.convertPlantHeadVectorToString(heads);
         if(readAndWrite.writeDataToFile(data,"plantHeadDetails.txt")) {
-            std::cout<<"\t\tYou Password changed successfully!\n";
+            std::cout<<"\t\tYour Password changed successfully!\n";
         } else {
             std::cout<<"\t\tError occurred while changing password";
         }
@@ -73,15 +73,15 @@ void User::headLogin(string filename) {
     if(isCredentialsCorrect) {
         data = conversionUtility.convertPlantHeadVectorToString(heads);
         if(readAndWrite.writeDataToFile(data,"plantHeadDetails.txt")) {
-            std::cout<<"\t\tCongratulations!! You have successfully logged into the System!\n";
+            std::cout<<"\t\tCongratulations! Logged into the system successfully!\n";
         } else {
             std::cout<<"\t\tError occurred while logging";
         }
-        std::cout<<"\n\t\t Press ENTER to continue...";
+        std::cout<<"\n\t\tPress ENTER to continue...";
         std::cin.ignore();
         std::cin.get();
     } else {
-        std::cout<<"\n \t\tAccess Denied! Unauthorized credentials!"<<"\n \t\t Press ENTER to try again...";
+        std::cout<<"\n\t\tAccess Denied! Unauthorized credentials!"<<"\n\t\t Press ENTER to try again...";
         std::cin.ignore();
         std::cin.get();
         headLogin(filename);
@@ -90,10 +90,10 @@ void User::headLogin(string filename) {
 
 void User::clientLogin(string filename) {
     system("clear");
-    std::cout<<"\n \t\tEnter your username and password to continue!";
-    std::cout<<"\n \t\t USERNAME: ";
+    std::cout<<"\n\t\tEnter Client username and password to continue!";
+    std::cout<<"\n\t\tUSERNAME: ";
     std::cin>>username;
-    std::cout<<"\t\t PASSWORD: ";
+    std::cout<<"\t\tPASSWORD: ";
     std::cin>>password;
     bool changePassword = false, isCredentialsCorrect = false;
     string data = readAndWrite.readDataFromFile(filename);
@@ -102,8 +102,8 @@ void User::clientLogin(string filename) {
         if(username == to_string(i->getClientID()) && password == i->getClientPassword()) {
             if(i->isClientApprovedByAdmin() == "true") {
                 if(i->isClientVerified() == "false") {
-                    std::cout<<"\n \t\tPlease change you password!";
-                    std::cout<<"\n \t\tEnter New Password: ";
+                    std::cout<<"\n\t\tPlease change you password!";
+                    std::cout<<"\n\t\tEnter New Password: ";
                     std::cin>>password;
                     i->setClientPassword(password);
                     i->setClientVerified("true");
@@ -136,7 +136,7 @@ void User::clientLogin(string filename) {
         }
     } else if(!isCredentialsCorrect){
         std::cout<<"\n\t\tAccess Denied! Unauthorized credentials!";
-        std::cout<<"\n\t\t Press ENTER to try again...";
+        std::cout<<"\n\t\tPress ENTER to try again...";
         std::cin.ignore();
         std::cin.get();
         clientLogin(filename);
