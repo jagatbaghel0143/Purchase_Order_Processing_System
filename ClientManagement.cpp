@@ -32,7 +32,7 @@ void ClientManagement::addClient() {
     Client client(clientID, clientNumber, clientName, clientLoc, primaryBusiness, clientPassword, "pend", "false", "false");
     string data = readAndWrite.readDataFromFile("clientDetails.txt");
     vector<Client> clients = conversionUtility.convertClientStringToVector(data);
-    clients.emplace_back(client);
+    clients.push_back(client);
     data = conversionUtility.convertClientVectorToString(clients);
     if(readAndWrite.writeDataToFile(data, "clientDetails.txt")) {
         std::cout<<"\n\tNew Plant Head with User ID # "<< clientID <<" and password : " << clientPassword <<" is added successfully!";
@@ -41,17 +41,17 @@ void ClientManagement::addClient() {
         std::cout<<"\n\t\tError while adding new plant";
     }
     std::cout<<"\n\t\tPress ENTER to continue...";
-    cin.ignore();
-    cin.get();
+    std::cin.ignore();
+    std::cin.get();
 }
 
 void ClientManagement::updateClient() {
     system("clear");
     int plantHeadId;
     std::cout<<"\t\tEnter Plant Head ID which you want to update: ";
-    cin>>plantHeadId;
+    std::cin>>plantHeadId;
     bool flag = true, updateStatus = false;
-    string data = readAndWrite.readDataFromFile("plantHeadDetails.txt");
+    string data = readAndWrite.readDataFromFile("clientDetails.txt");
     vector<PlantHead> plantHeads = conversionUtility.convertPlantHeadStringToVector(data);
     for(auto i = plantHeads.begin(); i != plantHeads.end(); ++i) {
         if(i->getPlantHeadId() == plantHeadId) {
@@ -64,12 +64,12 @@ void ClientManagement::updateClient() {
                 std::cout<<"\n\t\t1. Plant Head Name: "<<i->getPlantHeadName();
                 std::cout<<"\n\t\t2. Save";
                 std::cout<<"\nEnter your choice to update [1,2]: ";
-                cin>>choice;
+                std::cin>>choice;
             
                 switch(choice) {
                     case 1:
                         std::cout<<"\t\tEnter New Plant Head Name: ";
-                        cin>>name;
+                        std::cin>>name;
                         i->setPlantHeadName(name);
                         break;
 
@@ -95,17 +95,17 @@ void ClientManagement::updateClient() {
         std::cout << "\n\t\tOpps! No plant exists with this #"<<plantHeadId<<" Id\n\n";
     }
     std::cout<<"Press ENTER to continue...";
-    cin.ignore();
-    cin.get();
+    std::cin.ignore();
+    std::cin.get();
 }
 
 void ClientManagement::deleteClient() {
     system("clear");
     int plantId;
     std::cout<<"Enter Plant Head ID which you want to delete: ";
-    cin>>plantId;
+    std::cin>>plantId;
     bool flag = true, updateStatus = false;
-    string data = readAndWrite.readDataFromFile("plantHeadDetails.txt");
+    string data = readAndWrite.readDataFromFile("clientDetails.txt");
     vector<PlantHead> plantHeads = conversionUtility.convertPlantHeadStringToVector(data);
     for(auto i = plantHeads.begin(); i != plantHeads.end(); ++i) {
         if(i->getPlantHeadId() == plantId) {
@@ -118,7 +118,7 @@ void ClientManagement::deleteClient() {
             std::cout<<"\n\t\t1. YES";
             std::cout<<"\n\t\t2. NO";
             std::cout<<"\nEnter your choice to update [1,2]: ";
-            cin>>choice;
+            std::cin>>choice;
 
             switch(choice) {
                 case 1:
@@ -146,8 +146,8 @@ void ClientManagement::deleteClient() {
         std::cout << "\n\t\tOpps! No plant exists with this #"<<plantId<<" Id\n\n";
     }
     std::cout<<"Press ENTER to continue...";
-    cin.ignore();
-    cin.get();
+    std::cin.ignore();
+    std::cin.get();
 }
 
 void ClientManagement::checkStatus() {
@@ -171,4 +171,46 @@ void ClientManagement::checkStatus() {
     }
     std::cin.ignore();
     std::cin.get();
+}
+
+void ClientManagement::activityClient() {
+    while(1) {
+        system("clear");
+        std::cout<<"\n\t\t|-------------------------------------------------------------|";
+        std::cout<<"\n\t\t|             Welcome to Client Dashboard                     |";
+        std::cout<<"\n\t\t|-------------------------------------------------------------|";
+        std::cout<<"\n\t\t|             1. Generate Purchase Order                      |";
+        std::cout<<"\n\t\t|             2. View Purchase Order Status                   |";
+        std::cout<<"\n\t\t|             3. Logout                                       |";
+        std::cout<<"\n\t\t|-------------------------------------------------------------|";
+        std::cout<<"\n\t\tEnter your choice[1,2,3]: ";
+        int choice = -1;
+        std::cin>>choice;
+        int quantity=0;
+        string name="";
+        int orderid=time(nullptr);
+        switch(choice) {
+            case 1:
+                std::cout<<"\n\t\tEnter item name : ";
+                std::cin>>name;
+                std::cout<<"\n\t\tEnter quantity : ";
+                std::cin>>quantity;
+                std::cout<<"\t\t\t-------------------------------------------";
+                std::cout<<"\n\t\tYour order with orderid #" << orderid <<" is successfully placed!";
+                break;
+
+            case 2:
+                std::cout<<"\t\tEnter your order id : ";
+                break;
+
+            default:
+                std::cout<<"\t\tYou have been logged out successfully!";
+                break;
+        }
+        std::cin.ignore();
+        std::cin.get();
+        if(choice == 3) {
+            break;
+        }
+    }
 }

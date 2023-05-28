@@ -30,7 +30,7 @@ void Administration::addPlant() {
     Plant plant(id, name, loc, laborers, capacity);
     string data = readAndWrite.readDataFromFile("plants.txt");
     vector<Plant> plants = conversionUtility.convertPlantStringToVector(data);
-    plants.emplace_back(plant);
+    plants.push_back(plant);
     data = conversionUtility.convertPlantVectorToString(plants);
     if(readAndWrite.writeDataToFile(data, "plants.txt")) {
         int idd = plant.getPlantId();
