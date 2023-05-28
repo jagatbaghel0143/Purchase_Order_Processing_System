@@ -33,7 +33,9 @@ vector<Plant> ConversionUtility::convertPlantStringToVector(string data) {
         lineStream >> laborers;
         lineStream.ignore();
         lineStream >> capacity;
-        plants.emplace_back(id, name, location, laborers, capacity);
+        // plants.emplace_back(id, name, location, laborers, capacity);
+        Plant plant(id, name, location, laborers, capacity);
+        plants.push_back(plant);
     }
     return plants;
 }
@@ -60,7 +62,9 @@ vector<PlantHead> ConversionUtility::convertPlantHeadStringToVector(string data)
         getline(lineStream, password, ',');
         getline(lineStream, isVerified, ',');
         getline(lineStream, isLoggedIn, ',');
-        plantHeads.emplace_back(id, name, password, isLoggedIn, isVerified);
+        // plantHeads.emplace_back(id, name, password, isLoggedIn, isVerified);
+        PlantHead head(id, name, password, isLoggedIn, isVerified);
+        plantHeads.push_back(head);
     }
     return plantHeads;
 }
@@ -93,7 +97,9 @@ vector<Client> ConversionUtility::convertClientStringToVector(string data) {
         getline(lineStream, isApprovedByAdmin, ',');
         getline(lineStream, isVerified, ',');
         getline(lineStream, isloggedIn, ',');
-        clients.emplace_back(clientID,clientNumber,clientName,clientLoc,primaryBusiness,clientPassword,isApprovedByAdmin,isVerified,isloggedIn);
+        // clients.emplace_back(clientID,clientNumber,clientName,clientLoc,primaryBusiness,clientPassword,isApprovedByAdmin,isVerified,isloggedIn);
+        Client client(clientID,clientNumber,clientName,clientLoc,primaryBusiness,clientPassword,isApprovedByAdmin,isVerified,isloggedIn);
+        clients.push_back(client);
     }
     return clients;
 }

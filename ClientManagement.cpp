@@ -32,7 +32,7 @@ void ClientManagement::addClient() {
     Client client(clientID, clientNumber, clientName, clientLoc, primaryBusiness, clientPassword, "pend", "false", "false");
     string data = readAndWrite.readDataFromFile("clientDetails.txt");
     vector<Client> clients = conversionUtility.convertClientStringToVector(data);
-    clients.emplace_back(client);
+    clients.push_back(client);
     data = conversionUtility.convertClientVectorToString(clients);
     if(readAndWrite.writeDataToFile(data, "clientDetails.txt")) {
         std::cout<<"\n\tNew Plant Head with User ID # "<< clientID <<" and password : " << clientPassword <<" is added successfully!";
@@ -195,7 +195,7 @@ void ClientManagement::activityClient() {
                 std::cin>>name;
                 std::cout<<"\n\t\tEnter quantity : ";
                 std::cin>>quantity;
-                std::cout<<"---------------------------";
+                std::cout<<"\t\t\t-------------------------------------------";
                 std::cout<<"\n\t\tYour order with orderid #" << orderid <<" is successfully placed!";
                 break;
 

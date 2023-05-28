@@ -75,6 +75,7 @@ int main() {
                             break;
                         }
                     }
+                    break;
                 case 2:
                     system("clear");
                     while(1) {
@@ -86,7 +87,7 @@ int main() {
                         std::cout<<"\n\t\t2. Update Plant Head.";
                         std::cout<<"\n\t\t3. Delete Plant Head";
                         std::cout<<"\n\t\t4. Back";
-                        std::cout<<"\n\tEnter your choice[1,2,3,4,5]: ";
+                        std::cout<<"\n\tEnter your choice[1,2,3,4]: ";
                         std::cin>>choice;
                         switch (choice)
                         {
@@ -109,7 +110,7 @@ int main() {
                         if(choice == 4) {
                             break;
                         }
-                }
+                    }
                     break;
                 case 3:
                     system("clear");
@@ -126,7 +127,8 @@ int main() {
                     std::cout<<"\n\n\t\tYou have been logged out successfully! See you soon again!!\n\n";
                     exit(1);
             }
-            getchar();
+            std::cin.ignore();
+            std::cin.get();
         }
     } else if (res == 2) {
         AdministrationHead adminHead;
