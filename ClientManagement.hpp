@@ -12,5 +12,7 @@ class ClientManagement : public User {
         void deleteClient();
         void checkStatus();
         void activityClient();
+        void generateOrder();
+        void viewOrder();
 };
 #endif

@@ -11,11 +11,14 @@ using namespace std;
 
 int main() {
     int res;
-    std::cout<<"\n*****************************************************************************************************";
-    std::cout<<"\n**********************---WELCOME TO PURCHASE ORDER PROCESSING SYSTEM---******************************";
-    std::cout<<"\n*****************************************************************************************************";
-    std::cout<<"\n \t\t\t\t To Continue, please \n\n \t\t\t\t 1. Admin \n \t\t\t\t 2. Plant Head \n \t\t\t\t 3. Client \n \t\t\t\t";
-    std::cout<<"\n\t\t\t\t Enter your choice [1,2,3] : ";
+    std::cout<<"\n\t\t**************************************************************";
+    std::cout<<"\n\t\t*        WELCOME TO PURCHASE ORDER PROCESSING SYSTEM         *";
+    std::cout<<"\n\t\t**************************************************************";
+    std::cout<<"\n\t\t*               1. Admin                                     *";
+    std::cout<<"\n\t\t*               2. Plant Head                                *";
+    std::cout<<"\n\t\t*               3. Client                                    *";
+    std::cout<<"\n\t\t**************************************************************";
+    std::cout<<"\n\t\tEnter your choice [1,2,3] : ";
     std::cin >> res;
     if(res == 1) {
         Administration admin;
@@ -24,14 +27,15 @@ int main() {
         admin.adminLogin();
         while(1) {
             system("clear");
-            std::cout<<"\n*****************************************************************************************************";
-            std::cout<<"\n*****************---Welcome to Administration Module---*************************";
-            std::cout<<"\n*****************************************************************************************************";
-            std::cout<<"\n\t\t1. Manage Plants";
-            std::cout<<"\n\t\t2. Manage Plant Head.";
-            std::cout<<"\n\t\t3. View Purchase orders";
-            std::cout<<"\n\t\t4. Approve/Deny Client Request";
-            std::cout<<"\n\t\t5. Logout";
+            std::cout<<"\n\t\t*******************************************************";
+            std::cout<<"\n\t\t*        Welcome to Administration Module             *";
+            std::cout<<"\n\t\t*******************************************************";
+            std::cout<<"\n\t\t*       1. Manage Plants                              *";
+            std::cout<<"\n\t\t*       2. Manage Plant Head.                         *";
+            std::cout<<"\n\t\t*       3. View Purchase orders                       *";
+            std::cout<<"\n\t\t*       4. Approve/Deny Client Request                *";
+            std::cout<<"\n\t\t*       5. Logout                                     *";
+            std::cout<<"\n\t\t*******************************************************";
             std::cout<<"\n\tEnter your choice[1,2,3,4,5]: ";
             int choice = -1;
             std::cin>>choice;
@@ -39,14 +43,15 @@ int main() {
                 case 1:
                     while(1) {
                         system("clear");
-                        std::cout<<"\n*****************************************************************************************************";
-                        std::cout<<"\n*****************---Welcome to Plant Management---*************************";
-                        std::cout<<"\n*****************************************************************************************************";
-                        std::cout<<"\n\t\t1. Add New Plant";
-                        std::cout<<"\n\t\t2. Update Plant.";
-                        std::cout<<"\n\t\t3. Delete Plant";
-                        std::cout<<"\n\t\t4. Search and View Plant";
-                        std::cout<<"\n\t\t5. Back";
+                        std::cout<<"\n\t\t************************************************";
+                        std::cout<<"\n\t\t*        Welcome to Plant Management           *";
+                        std::cout<<"\n\t\t************************************************";
+                        std::cout<<"\n\t\t*        1. Add New Plant                      *";
+                        std::cout<<"\n\t\t*        2. Update Plant                       *";
+                        std::cout<<"\n\t\t*        3. Delete Plant                       *";
+                        std::cout<<"\n\t\t*        4. Search and View Plant              *";
+                        std::cout<<"\n\t\t*        5. Back                               *";
+                        std::cout<<"\n\t\t************************************************";
                         std::cout<<"\n\tEnter your choice[1,2,3,4,5]: ";
                         std::cin>>choice;
                         switch (choice)
@@ -80,13 +85,14 @@ int main() {
                     system("clear");
                     while(1) {
                         system("clear");
-                        std::cout<<"\n*****************************************************************************************************";
-                        std::cout<<"\n*****************---Welcome to Plant Head Management---*************************";
-                        std::cout<<"\n*****************************************************************************************************";
-                        std::cout<<"\n\t\t1. Add New Plant Head";
-                        std::cout<<"\n\t\t2. Update Plant Head.";
-                        std::cout<<"\n\t\t3. Delete Plant Head";
-                        std::cout<<"\n\t\t4. Back";
+                        std::cout<<"\n\t\t************************************************";
+                        std::cout<<"\n\t\t*        Welcome to Plant Head Management      *";
+                        std::cout<<"\n\t\t************************************************";
+                        std::cout<<"\n\t\t*1. Add New Plant Head                         *";
+                        std::cout<<"\n\t\t*2. Update Plant Head.                         *";
+                        std::cout<<"\n\t\t*3. Delete Plant Head                          *";
+                        std::cout<<"\n\t\t*4. Back                                       *";
+                        std::cout<<"\n\t\t************************************************";
                         std::cout<<"\n\tEnter your choice[1,2,3,4]: ";
                         std::cin>>choice;
                         switch (choice)
@@ -127,23 +133,22 @@ int main() {
                     std::cout<<"\n\n\t\tYou have been logged out successfully! See you soon again!!\n\n";
                     exit(1);
             }
-            std::cin.ignore();
-            std::cin.get();
         }
     } else if (res == 2) {
         AdministrationHead adminHead;
         adminHead.headLogin("plantHeadDetails.txt");
         while(1) {
             system("clear");
-            std::cout<<"\n*****************************************************************************************************";
-            std::cout<<"\n*****************---Welcome to Plant Head Module---*************************";
-            std::cout<<"\n*****************************************************************************************************";
-            std::cout<<"\n\t\t1. View Purchase Orders";
-            std::cout<<"\n\t\t2. Add Items";
-            std::cout<<"\n\t\t3. Update Items";
-            std::cout<<"\n\t\t4. Delete Items";
-            std::cout<<"\n\t\t5. View Items";
-            std::cout<<"\n\t\t6. Logout";
+            std::cout<<"\n\t\t************************************************";
+            std::cout<<"\n\t\t*        Welcome to Plant Head Module          *";
+            std::cout<<"\n\t\t************************************************";
+            std::cout<<"\n\t\t*        1. View Purchase Orders               *";
+            std::cout<<"\n\t\t*        2. Add Items                          *";
+            std::cout<<"\n\t\t*        3. Update Items                       *";
+            std::cout<<"\n\t\t*        4. Delete Items                       *";
+            std::cout<<"\n\t\t*        5. View Items                         *";
+            std::cout<<"\n\t\t*        6. Logout                             *";
+            std::cout<<"\n\t\t************************************************";
             std::cout<<"\n\tEnter your choice[1,2,3,4,5,6]: ";
             int choice = -1;
             std::cin>>choice;
@@ -183,13 +188,14 @@ int main() {
         ClientManagement clientManagement;
         while(1) {
             system("clear");
-            std::cout<<"\n*****************************************************************************************************";
-            std::cout<<"\n*****************---Welcome to Client Module---*************************";
-            std::cout<<"\n*****************************************************************************************************";
-            std::cout<<"\n\t\t1. Register";
-            std::cout<<"\n\t\t2. Login";
-            std::cout<<"\n\t\t3. Check Account Status";
-            std::cout<<"\n\t\t4. Back";
+            std::cout<<"\n\t\t************************************************";
+            std::cout<<"\n\t\t*        Welcome to Client Module              *";
+            std::cout<<"\n\t\t************************************************";            
+            std::cout<<"\n\t\t*        1. Register                           *";
+            std::cout<<"\n\t\t*        2. Login                              *";
+            std::cout<<"\n\t\t*        3. Check Account Status               *";
+            std::cout<<"\n\t\t*        4. Back                               *";
+            std::cout<<"\n\t\t************************************************";
             std::cout<<"\n\tEnter your choice[1,2,3,4]: ";
             int clientChoice = -1;
             std::cin >> clientChoice;
