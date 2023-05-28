@@ -25,7 +25,7 @@ void AdministrationHead::addPlantHead() {
     PlantHead plantHead(id, name, password, "false", "false");
     string data = readAndWrite.readDataFromFile("plantHeadDetails.txt");
     vector<PlantHead> plantHeads = conversionUtility.convertPlantHeadStringToVector(data);
-    plantHeads.emplace_back(plantHead);
+    plantHeads.push_back(plantHead);
     data = conversionUtility.convertPlantHeadVectorToString(plantHeads);
     if(readAndWrite.writeDataToFile(data, "plantHeadDetails.txt")) {
         cout<<"\n\tNew Plant Head with User ID # "<< id <<" and password : " << password <<" is added successfully!";

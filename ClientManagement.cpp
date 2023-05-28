@@ -6,6 +6,7 @@
 #include "ClientManagement.hpp"
 #include "RandomStringGenerator.hpp"
 #include "Client.hpp"
+#include "Order.hpp"
 
 using namespace std;
 
@@ -176,41 +177,92 @@ void ClientManagement::checkStatus() {
 void ClientManagement::activityClient() {
     while(1) {
         system("clear");
-        std::cout<<"\n\t\t|-------------------------------------------------------------|";
-        std::cout<<"\n\t\t|             Welcome to Client Dashboard                     |";
-        std::cout<<"\n\t\t|-------------------------------------------------------------|";
-        std::cout<<"\n\t\t|             1. Generate Purchase Order                      |";
-        std::cout<<"\n\t\t|             2. View Purchase Order Status                   |";
-        std::cout<<"\n\t\t|             3. Logout                                       |";
-        std::cout<<"\n\t\t|-------------------------------------------------------------|";
+        std::cout<<"\n\t\t***************************************************************";
+        std::cout<<"\n\t\t*             Welcome to Client Dashboard                     *";
+        std::cout<<"\n\t\t***************************************************************";
+        std::cout<<"\n\t\t*             1. Generate Purchase Order                      *";
+        std::cout<<"\n\t\t*             2. View Purchase Order Status                   *";
+        std::cout<<"\n\t\t*             3. Logout                                       *";
+        std::cout<<"\n\t\t***************************************************************";
         std::cout<<"\n\t\tEnter your choice[1,2,3]: ";
         int choice = -1;
         std::cin>>choice;
-        int quantity=0;
-        string name="";
-        int orderid=time(nullptr);
         switch(choice) {
             case 1:
-                std::cout<<"\n\t\tEnter item name : ";
-                std::cin>>name;
-                std::cout<<"\n\t\tEnter quantity : ";
-                std::cin>>quantity;
-                std::cout<<"\t\t\t-------------------------------------------";
-                std::cout<<"\n\t\tYour order with orderid #" << orderid <<" is successfully placed!";
+                generateOrder();
                 break;
 
             case 2:
-                std::cout<<"\t\tEnter your order id : ";
+                viewOrder();
                 break;
 
             default:
                 std::cout<<"\t\tYou have been logged out successfully!";
                 break;
         }
-        std::cin.ignore();
-        std::cin.get();
         if(choice == 3) {
             break;
         }
     }
+}
+
+void ClientManagement::generateOrder() {
+    system("clear");
+    int quantity=0, cID=-1;
+    string pName="";
+    string id = to_string(time(nullptr));
+    id = id.substr(id.length() - 5);
+    int orderid = stoi(id);
+    std::cout<<"\n\t\tEnter client id : ";
+    std::cin>>cID;
+    std::cout<<"\n\t\tEnter item name : ";
+    std::cin>>pName;
+    std::cout<<"\n\t\tEnter quantity : ";
+    std::cin>>quantity;
+    std::cout<<"\t\t\t-------------------------------------------";
+    Order order(cID, orderid, pName, quantity, "pending");
+    string data = readAndWrite.readDataFromFile("orders.txt");
+    vector<Order> orders = conversionUtility.convertOrderStringToVector(data);
+    orders.push_back(order);
+    data = conversionUtility.convertOrderVectorToString(orders);
+    if(readAndWrite.writeDataToFile(data, "orders.txt")) {
+        std::cout<<"\n\t\tYour order with orderid #" << orderid <<" is successfully placed!";
+    } else {
+        std::cout<<"\n\t\tError while placing your order";
+    }
+    std::cout<<"\n\t\tPress ENTER to continue...";
+    std::cin.ignore();
+    std::cin.get();
+    
+}
+
+void ClientManagement::viewOrder() {
+    system("clear");
+    int orderID;
+    std::cout<<"\t\tEnter Order ID : ";
+    std::cin>>orderID;
+    bool flag = true;
+    string data = readAndWrite.readDataFromFile("orders.txt");
+    vector<Order> orders = conversionUtility.convertOrderStringToVector(data);
+    for(auto i = orders.begin(); i != orders.end(); ++i) {
+        if(i->getOrderID() == orderID) {
+            flag = false;
+            std::cout<<"\n\t\t***********************************************";
+            std::cout<<"\n\t\t*       Order Details are as follows          *";
+            std::cout<<"\n\t\t***********************************************";
+            std::cout<<"\n\t\t\tClient Id: "<<i->getClientID();
+            std::cout<<"\n\t\t\tOrder ID: "<<i->getOrderID();
+            std::cout<<"\n\t\t\tItem Name: "<<i->getProductName();
+            std::cout<<"\n\t\t\tQuantity: "<<i->getQuantity();
+            std::cout<<"\n\t\t\tOrder Status: "<<i->getOrderStatus();
+            std::cout<<"\n\t\t***********************************************";
+        
+        }
+    }
+    if(flag) {
+        std::cout << "\n\t\tOpps! No order exists with this #"<<orderID<<" Id";
+    }
+    std::cout<<"\n\t\tPress ENTER to continue...";
+    std::cin.ignore();
+    std::cin.get();
 }

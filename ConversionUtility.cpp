@@ -6,6 +6,7 @@
 #include "Plant.hpp"
 #include "PlantHead.hpp"
 #include "Client.hpp"
+#include "Order.hpp"
 
 using namespace std;
 
@@ -102,4 +103,34 @@ vector<Client> ConversionUtility::convertClientStringToVector(string data) {
         clients.push_back(client);
     }
     return clients;
+}
+
+string ConversionUtility::convertOrderVectorToString(vector<Order> orders) {
+    stringstream ss;
+    for (auto order : orders) {
+        ss <<  order.getClientID() << "," <<  order.getOrderID() << "," <<  order.getProductName()<<","<<  order.getQuantity()<<","<< order.getOrderStatus()<<"\n";
+    }
+    return ss.str();
+}
+
+vector<Order> ConversionUtility::convertOrderStringToVector(string data) {
+    vector<Order> orders;
+    stringstream ss(data);
+    string line;
+    while (getline(ss, line)) {
+        stringstream lineStream(line);
+        int quantity, orderid, clientID;
+        std::string productName, orderStatus;
+        lineStream >> clientID;
+        lineStream.ignore();
+        lineStream >> orderid;
+        lineStream.ignore();
+        getline(lineStream, productName, ',');
+        lineStream >> quantity;
+        lineStream.ignore();
+        getline(lineStream, orderStatus, ',');
+        Order order(clientID,orderid,productName,quantity,orderStatus);
+        orders.push_back(order);
+    }
+    return orders;
 }
