@@ -19,14 +19,14 @@ void Administration::addPlant() {
     string loc;
     int laborers;
     int capacity;
-    cout<<"\n\t\tEnter Plant Name: ";
-    cin>>name;
-    cout<<"\t\tEnter Plant Location: ";
-    cin>>loc;
-    cout<<"\t\tEnter Loborer Count: ";
-    cin>>laborers;
-    cout<<"\t\tEnter Capacity Per Month: ";
-    cin>>capacity;
+    std::cout<<"\n\t\tEnter Plant Name: ";
+    std::cin>>name;
+    std::cout<<"\t\tEnter Plant Location: ";
+    std::cin>>loc;
+    std::cout<<"\t\tEnter Loborer Count: ";
+    std::cin>>laborers;
+    std::cout<<"\t\tEnter Capacity Per Month: ";
+    std::cin>>capacity;
     Plant plant(id, name, loc, laborers, capacity);
     string data = readAndWrite.readDataFromFile("plants.txt");
     vector<Plant> plants = conversionUtility.convertPlantStringToVector(data);
@@ -34,20 +34,20 @@ void Administration::addPlant() {
     data = conversionUtility.convertPlantVectorToString(plants);
     if(readAndWrite.writeDataToFile(data, "plants.txt")) {
         int idd = plant.getPlantId();
-        cout<<"\n\tNew manufacturing unit with ID #"<<idd<<" is added successfully!";
+        std::cout<<"\n\tNew manufacturing unit with ID #"<<idd<<" is added successfully!";
     } else {
-        cout<<"\n\t\tError while adding new plant";
+        std::cout<<"\n\t\tError while adding new plant";
     }
-    cout<<"\n\t\tPress ENTER to continue...";
-    cin.ignore();
-    cin.get();
+    std::cout<<"\n\t\tPress ENTER to continue...";
+    std::cin.ignore();
+    std::cin.get();
 }
 
 void Administration::updatePlant() {
     system("clear");
     int plantId;
-    cout<<"\t\tEnter Plant ID which you want to update: ";
-    cin>>plantId;
+    std::cout<<"\t\tEnter Plant ID which you want to update: ";
+    std::cin>>plantId;
     bool flag = true, updateStatus = false;
     string data = readAndWrite.readDataFromFile("plants.txt");
     vector<Plant> plant = conversionUtility.convertPlantStringToVector(data);
@@ -57,38 +57,38 @@ void Administration::updatePlant() {
             int count, capacity, choice = -1;
             flag = false;
             while(1) {
-                cout<<"\t\tCurrent Plant Details are as follows:";
-                cout<<"\n\t\tPlant Id: "<<i->getPlantId();
-                cout<<"\n\t\t1. Plant Name: "<<i->getPlantName();
-                cout<<"\n\t\t2. Plant Location: "<<i->getPlantLoc();
-                cout<<"\n\t\t3. Laborer Count: "<<i->getLaborerCount();
-                cout<<"\n\t\t4. Capacity Per Month: "<<i->getCapacityPerMonth();
-                cout<<"\n\t\t5. Save";
-                cout<<"\nEnter your choice to update [1,2,3,4,5]: ";
-                cin>>choice;
+                std::cout<<"\t\tCurrent Plant Details are as follows:";
+                std::cout<<"\n\t\tPlant Id: "<<i->getPlantId();
+                std::cout<<"\n\t\t1. Plant Name: "<<i->getPlantName();
+                std::cout<<"\n\t\t2. Plant Location: "<<i->getPlantLoc();
+                std::cout<<"\n\t\t3. Laborer Count: "<<i->getLaborerCount();
+                std::cout<<"\n\t\t4. Capacity Per Month: "<<i->getCapacityPerMonth();
+                std::cout<<"\n\t\t5. Save";
+                std::cout<<"\nEnter your choice to update [1,2,3,4,5]: ";
+                std::cin>>choice;
             
                 switch(choice) {
                     case 1:
-                        cout<<"\t\tEnter New Plant Name: ";
-                        cin>>name;
+                        std::cout<<"\t\tEnter New Plant Name: ";
+                        std::cin>>name;
                         i->setPlantName(name);
                         break;
                     
                     case 2:
-                        cout<<"\t\tEnter New Plant Location: ";
-                        cin>>loc;
+                        std::cout<<"\t\tEnter New Plant Location: ";
+                        std::cin>>loc;
                         i->setPlantLoc(loc);
                         break;
                     
                     case 3:
-                        cout<<"\t\tEnter New Laborer Count: ";
-                        cin>>count;
+                        std::cout<<"\t\tEnter New Laborer Count: ";
+                        std::cin>>count;
                         i->setLaborerCount(count);
                         break;
                     
                     case 4:
-                        cout<<"\t\tEnter New Capacity Per Month: ";
-                        cin>>capacity;
+                        std::cout<<"\t\tEnter New Capacity Per Month: ";
+                        std::cin>>capacity;
                         i->setCapacityPerMonth(capacity);
                         break;
                     default:
@@ -102,26 +102,26 @@ void Administration::updatePlant() {
             }
             if(updateStatus) {
                 if(readAndWrite.writeDataToFile(conversionUtility.convertPlantVectorToString(plant), "plants.txt")) {
-                    cout<<"\n\t\tPlant details updated successfully!\n\n";
+                    std::cout<<"\n\t\tPlant details updated successfully!\n\n";
                 }else {
-                cout<<"\nError while updating plant details...";
+                std::cout<<"\nError while updating plant details...";
                 }
             }
         }
     }
     if(flag) {
-        cout << "\n\t\tOpps! No plant exists with this #"<<plantId<<" Id\n\n";
+        std::cout << "\n\t\tOpps! No plant exists with this #"<<plantId<<" Id\n\n";
     }
-    cout<<"Press ENTER to continue...";
-    cin.ignore();
-    cin.get();
+    std::cout<<"Press ENTER to continue...";
+    std::cin.ignore();
+    std::cin.get();
 }
 
 void Administration::deletePlant() {
     system("clear");
     int plantId;
-    cout<<"Enter Plant ID which you want to delete: ";
-    cin>>plantId;
+    std::cout<<"Enter Plant ID which you want to delete: ";
+    std::cin>>plantId;
     bool flag = true, updateStatus = false;
     string data = readAndWrite.readDataFromFile("plants.txt");
     vector<Plant> plant = conversionUtility.convertPlantStringToVector(data);
@@ -129,17 +129,17 @@ void Administration::deletePlant() {
         if(i->getPlantId() == plantId) {
             int choice = -1;
             flag = false;
-            cout<<"\t\tPlant Details are as follows:";
-            cout<<"\n\t\tPlant Id: "<<i->getPlantId();
-            cout<<"\n\t\tPlant Name: "<<i->getPlantName();
-            cout<<"\n\t\tPlant Location: "<<i->getPlantLoc();
-            cout<<"\n\t\tLaborer Count: "<<i->getLaborerCount();
-            cout<<"\n\t\tCapacity Per Month: "<<i->getCapacityPerMonth();
-            cout<<"\n\n\t\tAre you sure you want to delete it...";
-            cout<<"\n\t\t1. YES";
-            cout<<"\n\t\t2. NO";
-            cout<<"\nEnter your choice to update [1,2]: ";
-            cin>>choice;
+            std::cout<<"\t\tPlant Details are as follows:";
+            std::cout<<"\n\t\tPlant Id: "<<i->getPlantId();
+            std::cout<<"\n\t\tPlant Name: "<<i->getPlantName();
+            std::cout<<"\n\t\tPlant Location: "<<i->getPlantLoc();
+            std::cout<<"\n\t\tLaborer Count: "<<i->getLaborerCount();
+            std::cout<<"\n\t\tCapacity Per Month: "<<i->getCapacityPerMonth();
+            std::cout<<"\n\n\t\tAre you sure you want to delete it...";
+            std::cout<<"\n\t\t1. YES";
+            std::cout<<"\n\t\t2. NO";
+            std::cout<<"\nEnter your choice to update [1,2]: ";
+            std::cin>>choice;
 
             switch(choice) {
                 case 1:
@@ -155,27 +155,27 @@ void Administration::deletePlant() {
             }
             if(updateStatus) {
                 if(readAndWrite.writeDataToFile(conversionUtility.convertPlantVectorToString(plant),"plants.txt")) {
-                    cout<<"\n\t\tPlant with id #"<<plantId<<" deleted successfully!\n\n";
+                    std::cout<<"\n\t\tPlant with id #"<<plantId<<" deleted successfully!\n\n";
                 }else {
-                cout<<"\nError while deleting plant details...";
+                std::cout<<"\nError while deleting plant details...";
                 }
             }
             break;
         }
     }
     if(flag) {
-        cout << "\n\t\tOpps! No plant exists with this #"<<plantId<<" Id\n\n";
+        std::cout << "\n\t\tOpps! No plant exists with this #"<<plantId<<" Id\n\n";
     }
-    cout<<"Press ENTER to continue...";
-    cin.ignore();
-    cin.get();
+    std::cout<<"Press ENTER to continue...";
+    std::cin.ignore();
+    std::cin.get();
 }
 
 void Administration::searchPlant() {
     system("clear");
     string plantNameOrLoc;
-    cout<<"Enter Plant name or location to search OR enter (*) to view all plants: ";
-    cin>>plantNameOrLoc;
+    std::cout<<"Enter Plant name or location to search OR enter (*) to view all plants: ";
+    std::cin>>plantNameOrLoc;
     bool flag = true;
     string data = readAndWrite.readDataFromFile("plants.txt");
     vector<Plant> plant = conversionUtility.convertPlantStringToVector(data);
@@ -184,32 +184,136 @@ void Administration::searchPlant() {
             int index = 1;
             flag = false;
             for(auto i = plant.begin(); i != plant.end(); ++i, ++index) {
-                cout<<"\t\t" + index << ". Plant Details are as follows:";
-                cout<<"\n\t\tPlant Id: "<<i->getPlantId();
-                cout<<"\n\t\tPlant Name: "<<i->getPlantName();
-                cout<<"\n\t\tPlant Location: "<<i->getPlantLoc();
-                cout<<"\n\t\tLaborer Count: "<<i->getLaborerCount();
-                cout<<"\n\t\tCapacity Per Month: "<<i->getCapacityPerMonth()<<endl<<endl;
+                std::cout<<"\t\t" + index << ". Plant Details are as follows:";
+                std::cout<<"\n\t\tPlant Id: "<<i->getPlantId();
+                std::cout<<"\n\t\tPlant Name: "<<i->getPlantName();
+                std::cout<<"\n\t\tPlant Location: "<<i->getPlantLoc();
+                std::cout<<"\n\t\tLaborer Count: "<<i->getLaborerCount();
+                std::cout<<"\n\t\tCapacity Per Month: "<<i->getCapacityPerMonth()<<endl<<endl;
             }
         } else {
             for(auto i = plant.begin(); i != plant.end(); ++i) {
                 if(i->getPlantName() == plantNameOrLoc || i->getPlantLoc() == plantNameOrLoc) {
                     flag = false;
-                    cout<<"\t\tPlant Details are as follows:";
-                    cout<<"\n\t\tPlant Id: "<<i->getPlantId();
-                    cout<<"\n\t\tPlant Name: "<<i->getPlantName();
-                    cout<<"\n\t\tPlant Location: "<<i->getPlantLoc();
-                    cout<<"\n\t\tLaborer Count: "<<i->getLaborerCount();
-                    cout<<"\n\t\tCapacity Per Month: "<<i->getCapacityPerMonth()<<endl<<endl;
+                    std::cout<<"\t\tPlant Details are as follows:";
+                    std::cout<<"\n\t\tPlant Id: "<<i->getPlantId();
+                    std::cout<<"\n\t\tPlant Name: "<<i->getPlantName();
+                    std::cout<<"\n\t\tPlant Location: "<<i->getPlantLoc();
+                    std::cout<<"\n\t\tLaborer Count: "<<i->getLaborerCount();
+                    std::cout<<"\n\t\tCapacity Per Month: "<<i->getCapacityPerMonth()<<endl<<endl;
                 }
             }
 
         }
     }
     if(flag) {
-        cout << "\n\t\tOpps! No plant exists with this Name or Location";
+        std::cout << "\n\t\tOpps! No plant exists with this Name or Location";
     }
-    cout<<"\n\t\tPress ENTER to continue...";
-    cin.ignore();
-    cin.get();
+    std::cout<<"\n\t\tPress ENTER to continue...";
+    std::cin.ignore();
+    std::cin.get();
+}
+
+void Administration::viewOrders() {
+    system("clear");
+    string data = readAndWrite.readDataFromFile("orders.txt");
+    vector<Order> orders = conversionUtility.convertOrderStringToVector(data);
+    std::cout<<"\n\t\t***********************************************";
+    std::cout<<"\n\t\t*    Recent Order Details are as follows      *";
+    std::cout<<"\n\t\t***********************************************";
+    for(auto i = orders.begin(); i != orders.end(); ++i) {
+        std::cout<<"\n\t\t\tClient Id: "<<i->getClientID();
+        std::cout<<"\n\t\t\tOrder ID: "<<i->getOrderID();
+        std::cout<<"\n\t\t\tItem Name: "<<i->getProductName();
+        std::cout<<"\n\t\t\tQuantity: "<<i->getQuantity();
+        std::cout<<"\n\t\t\tOrder Status: "<<i->getOrderStatus();
+        std::cout<<"\n\t\t***********************************************";
+        
+    }
+    std::cout<<"\n\t\tPress ENTER to continue...";
+    std::cin.ignore();
+    std::cin.get();
+}
+
+void Administration::viewRequests() {
+    system("clear");
+    string data = readAndWrite.readDataFromFile("clientDetails.txt");
+    vector<Client> clients = conversionUtility.convertClientStringToVector(data);
+    if(clients.size()>0) {
+        std::cout<<"\n\t\tClient Requests are as follows(if any): ";
+    }
+    bool noPendingRequest=true;
+    for(auto i = clients.begin(); i != clients.end(); ++i) {
+        if(i->isClientApprovedByAdmin() == "pending") {
+            noPendingRequest = false;
+            std::cout<<"\n\t\tID                : "<<i->getClientID();
+            std::cout<<"\n\t\tMobile Number     : "<<i->getClientNumber();
+            std::cout<<"\n\t\tName              : "<<i->getClientName();
+            std::cout<<"\n\t\tLocation          : "<<i->getClientLocation();
+            std::cout<<"\n\t\tPrimary Business  : "<<i->getPrimaryBusiness();
+            std::cout<<"\n\t\tApproved By Admin : "<<i->isClientApprovedByAdmin();
+            std::cout<<"\n\t\t***************************************************";
+        }
+    }
+    if(noPendingRequest) {
+        std::cout<<"\n\t\tNo Pending request available!";
+    }
+    std::cout<<"\n\t\tPress ENTER to continue...";
+    std::cin.ignore();
+    std::cin.get();
+}
+
+void Administration::approveDenyRequest() {
+    system("clear");
+    int clientID=-1;
+    std::cout<<"\n \t\tEnter Client ID : ";
+    std::cin>>clientID;
+    string data = readAndWrite.readDataFromFile("clientDetails.txt");
+    vector<Client> clients = conversionUtility.convertClientStringToVector(data);
+    int choice=-1;
+    for(auto i = clients.begin(); i != clients.end(); ++i) {
+        if(clientID == i->getClientID()) {
+            if(i->isClientApprovedByAdmin() == "pending") {
+                std::cout<<"\n\t\t***********************************";
+                std::cout<<"\n\t\t*       Want to Approve Or Deny   *";
+                std::cout<<"\n\t\t***********************************";
+                std::cout<<"\n\t\t*           1. Approve            *";
+                std::cout<<"\n\t\t*           2. Deny               *";
+                std::cout<<"\n\t\t*           3. Back               *";
+                std::cout<<"\n\t\t***********************************";
+                std::cout<<"\n\t\tEnter your choice [1,2,3]: " ;
+                std::cin>>choice;
+                switch(choice) {
+                    case 1:
+                        i->setClientApprovedByAdmin("true");
+                        break;
+
+                    case 2:
+                        i->setClientApprovedByAdmin("false");
+                        break;
+
+                    default :
+                        break;
+                }
+                break;
+            }
+        }
+    }
+    if(choice == -1) {
+        std::cout<<"\n\t\tNo request exists with this Id";
+    } else if (choice == 1 || choice == 2){
+        data = conversionUtility.convertClientVectorToString(clients);
+        if(readAndWrite.writeDataToFile(data, "clientDetails.txt")) {
+            if(choice == 1) {
+                std::cout<<"\n\t\tClient Request Approved Successfully!";
+            } else {
+                std::cout<<"\n\t\tClient Request Denied!";
+            }
+        } else {
+            std::cout<<"\n\t\tError while approving request!";
+        }
+    }
+    std::cout<<"\n\t\tPress ENTER to continue...";
+    std::cin.ignore();
+    std::cin.get();
 }

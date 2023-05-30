@@ -119,13 +119,39 @@ int main() {
                     }
                     break;
                 case 3:
-                    system("clear");
-                    std::cout<<"List of Items manufacturing in Plants\n";
+                    admin.viewOrders();
                     break;
 
                 case 4:
-                    system("clear");
-                    std::cout<<"Approve/Deny Client Request\n";
+                    while(1) {
+                        system("clear");
+                        int choice = -1;
+                        std::cout<<"\n\t\t***********************************************";
+                        std::cout<<"\n\t\t*            Client Request Dashboard         *";
+                        std::cout<<"\n\t\t***********************************************";
+                        std::cout<<"\n\t\t*             1. View Requests                *";
+                        std::cout<<"\n\t\t*             2. Approve/Deny Request         *";
+                        std::cout<<"\n\t\t*             3. Back                         *";
+                        std::cout<<"\n\t\t***********************************************";
+                        std::cout<<"\n\t\tEnter choice [1,2,3] : ";
+                        std::cin>>choice;
+                        switch(choice) {
+                            case 1:
+                                admin.viewRequests();
+                                break;
+
+                            case 2:
+                                admin.approveDenyRequest();
+                                break;
+
+                            case 3:
+                                break;
+                        }
+                        if(choice==3){
+                            break;
+                        }
+        
+                    }
                     break;
 
                 default:
