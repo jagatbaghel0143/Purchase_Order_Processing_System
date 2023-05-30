@@ -30,7 +30,7 @@ void ClientManagement::addClient() {
     std::cout<<"\t\t4. Enter Contact Number: ";
     std::cin>>clientNumber;
     clientPassword = randomStringGenerator.generateRandomString(LENGTH) ;
-    Client client(clientID, clientNumber, clientName, clientLoc, primaryBusiness, clientPassword, "pend", "false", "false");
+    Client client(clientID, clientNumber, clientName, clientLoc, primaryBusiness, clientPassword, "pending", "false", "false");
     string data = readAndWrite.readDataFromFile("clientDetails.txt");
     vector<Client> clients = conversionUtility.convertClientStringToVector(data);
     clients.push_back(client);
@@ -170,7 +170,7 @@ void ClientManagement::checkStatus() {
             break;
         }
     }
-    std::cout<<"Press ENTER to continue...";
+    std::cout<<"\n\t\tPress ENTER to continue...";
     std::cin.ignore();
     std::cin.get();
 }

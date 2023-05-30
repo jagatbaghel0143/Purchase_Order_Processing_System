@@ -12,5 +12,8 @@ class Administration : public User {
         void updatePlant();
         void deletePlant();
         void searchPlant();
+        void viewOrders();
+        void viewRequests();
+        void approveDenyRequest();
 };
 #endif
