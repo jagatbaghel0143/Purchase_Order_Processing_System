@@ -6,6 +6,7 @@
 #include "Administration.hpp"
 #include "AdministrationHead.hpp"
 #include "ClientManagement.hpp"
+#include "PlantHeadActivity.hpp"
 
 using namespace std;
 
@@ -162,6 +163,7 @@ int main() {
         }
     } else if (res == 2) {
         AdministrationHead adminHead;
+        PlantHeadActivity plantHeadActivity;
         adminHead.headLogin("plantHeadDetails.txt");
         while(1) {
             system("clear");
@@ -180,28 +182,28 @@ int main() {
             std::cin>>choice;
             switch(choice) {
                 case 1:
-                    std::cout<<"Purchase Orders list will open\n";
+                    plantHeadActivity.viewPurchaseOrder();
                     break;
 
                 case 2:
-                    std::cout<<"Add Items will open\n";
+                    plantHeadActivity.addItem();
                     break;
 
                 case 3:
-                    std::cout<<"Add Items will open\n";
+                    plantHeadActivity.updateItem();
                     break;
 
                 case 4:
-                    std::cout<<"Add Items will open\n";
+                    plantHeadActivity.deleteItem();
                     break;
 
                 case 5:
-                    std::cout<<"Add Items will open\n";
+                    plantHeadActivity.viewItems();
                     break;
 
                 default:
                     system("clear");
-                    std::cout<<"\nt\tLogged out successfully! See you soon again!!\n\n";
+                    std::cout<<"\n\t\tLogged out successfully! See you soon again!!\n\n";
                     break;
             }
             if(choice == 6) {
