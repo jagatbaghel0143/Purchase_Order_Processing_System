@@ -23,11 +23,11 @@ void AdministrationHead::addPlantHead() {
     string password;
     password = randomStringGenerator.generateRandomString(LENGTH) ;
     PlantHead plantHead(id, name, password, "false", "false");
-    string data = readAndWrite.readDataFromFile("plantHeadDetails.txt");
+    string data = readAndWrite.readDataFromFile("Resources/plantHeadDetails.txt");
     vector<PlantHead> plantHeads = conversionUtility.convertPlantHeadStringToVector(data);
     plantHeads.push_back(plantHead);
     data = conversionUtility.convertPlantHeadVectorToString(plantHeads);
-    if(readAndWrite.writeDataToFile(data, "plantHeadDetails.txt")) {
+    if(readAndWrite.writeDataToFile(data, "Resources/plantHeadDetails.txt")) {
         cout<<"\n\tNew Plant Head with User ID # "<< id <<" and password : " << password <<" is added successfully!";
         cout<<"\n\tPlease Note Your Id and password";
     } else {
@@ -44,7 +44,7 @@ void AdministrationHead::updatePlantHead() {
     cout<<"\t\tEnter Plant Head ID which you want to update: ";
     cin>>plantHeadId;
     bool flag = true, updateStatus = false;
-    string data = readAndWrite.readDataFromFile("plantHeadDetails.txt");
+    string data = readAndWrite.readDataFromFile("Resources/plantHeadDetails.txt");
     vector<PlantHead> plantHeads = conversionUtility.convertPlantHeadStringToVector(data);
     for(auto i = plantHeads.begin(); i != plantHeads.end(); ++i) {
         if(i->getPlantHeadId() == plantHeadId) {
@@ -76,7 +76,7 @@ void AdministrationHead::updatePlantHead() {
                 }
             }
             if(updateStatus) {
-                if(readAndWrite.writeDataToFile(conversionUtility.convertPlantHeadVectorToString(plantHeads), "plantHeadDetails.txt")) {
+                if(readAndWrite.writeDataToFile(conversionUtility.convertPlantHeadVectorToString(plantHeads), "Resources/plantHeadDetails.txt")) {
                     cout<<"\n\t\tPlant details updated successfully!\n\n";
                 }else {
                 cout<<"\nError while updating plant details...";
@@ -98,7 +98,7 @@ void AdministrationHead::deletePlantHead() {
     cout<<"Enter Plant Head ID which you want to delete: ";
     cin>>plantId;
     bool flag = true, updateStatus = false;
-    string data = readAndWrite.readDataFromFile("plantHeadDetails.txt");
+    string data = readAndWrite.readDataFromFile("Resources/plantHeadDetails.txt");
     vector<PlantHead> plantHeads = conversionUtility.convertPlantHeadStringToVector(data);
     for(auto i = plantHeads.begin(); i != plantHeads.end(); ++i) {
         if(i->getPlantHeadId() == plantId) {
@@ -126,7 +126,7 @@ void AdministrationHead::deletePlantHead() {
                 updateStatus = true;
             }
             if(updateStatus) {
-                if(readAndWrite.writeDataToFile(conversionUtility.convertPlantHeadVectorToString(plantHeads), "plantHeadDetails.txt")) {
+                if(readAndWrite.writeDataToFile(conversionUtility.convertPlantHeadVectorToString(plantHeads), "Resources/plantHeadDetails.txt")) {
                     cout<<"\n\t\tPlant with id #"<<plantId<<" deleted successfully!\n\n";
                 }else {
                 cout<<"\nError while deleting plant details...";

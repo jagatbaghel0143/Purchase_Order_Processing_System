@@ -164,7 +164,7 @@ int main() {
     } else if (res == 2) {
         AdministrationHead adminHead;
         PlantHeadActivity plantHeadActivity;
-        adminHead.headLogin("plantHeadDetails.txt");
+        adminHead.headLogin("Resources/plantHeadDetails.txt");
         while(1) {
             system("clear");
             std::cout<<"\n\t\t************************************************";
@@ -232,7 +232,7 @@ int main() {
                     break;
 
                 case 2:
-                    clientManagement.clientLogin("clientDetails.txt");
+                    clientManagement.clientLogin("Resources/clientDetails.txt");
                     clientManagement.activityClient();
                     break;
 

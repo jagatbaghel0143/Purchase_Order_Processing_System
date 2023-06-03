@@ -1,9 +1,10 @@
 .vscode
 run
 compile.sh
-plants.txt
-plantHeadDetails.txt
-clientDetails.txt
+Resources/plants.txt
+Resources/plantHeadDetails.txt
+Resources/clientDetails.txt
 debug.sh
 run.out
-orders.txt
+Resources/orders.txt
+Resources/items.txt

@@ -28,11 +28,11 @@ void Administration::addPlant() {
     std::cout<<"\t\tEnter Capacity Per Month: ";
     std::cin>>capacity;
     Plant plant(id, name, loc, laborers, capacity);
-    string data = readAndWrite.readDataFromFile("plants.txt");
+    string data = readAndWrite.readDataFromFile("Resources/plants.txt");
     vector<Plant> plants = conversionUtility.convertPlantStringToVector(data);
     plants.push_back(plant);
     data = conversionUtility.convertPlantVectorToString(plants);
-    if(readAndWrite.writeDataToFile(data, "plants.txt")) {
+    if(readAndWrite.writeDataToFile(data, "Resources/plants.txt")) {
         int idd = plant.getPlantId();
         std::cout<<"\n\tNew manufacturing unit with ID #"<<idd<<" is added successfully!";
     } else {
@@ -49,7 +49,7 @@ void Administration::updatePlant() {
     std::cout<<"\t\tEnter Plant ID which you want to update: ";
     std::cin>>plantId;
     bool flag = true, updateStatus = false;
-    string data = readAndWrite.readDataFromFile("plants.txt");
+    string data = readAndWrite.readDataFromFile("Resources/plants.txt");
     vector<Plant> plant = conversionUtility.convertPlantStringToVector(data);
     for(auto i = plant.begin(); i != plant.end(); ++i) {
         if(i->getPlantId() == plantId) {
@@ -101,7 +101,7 @@ void Administration::updatePlant() {
                 }
             }
             if(updateStatus) {
-                if(readAndWrite.writeDataToFile(conversionUtility.convertPlantVectorToString(plant), "plants.txt")) {
+                if(readAndWrite.writeDataToFile(conversionUtility.convertPlantVectorToString(plant), "Resources/plants.txt")) {
                     std::cout<<"\n\t\tPlant details updated successfully!\n\n";
                 }else {
                 std::cout<<"\nError while updating plant details...";
@@ -123,7 +123,7 @@ void Administration::deletePlant() {
     std::cout<<"Enter Plant ID which you want to delete: ";
     std::cin>>plantId;
     bool flag = true, updateStatus = false;
-    string data = readAndWrite.readDataFromFile("plants.txt");
+    string data = readAndWrite.readDataFromFile("Resources/plants.txt");
     vector<Plant> plant = conversionUtility.convertPlantStringToVector(data);
     for(auto i = plant.begin(); i != plant.end(); ++i) {
         if(i->getPlantId() == plantId) {
@@ -154,7 +154,7 @@ void Administration::deletePlant() {
                 updateStatus = true;
             }
             if(updateStatus) {
-                if(readAndWrite.writeDataToFile(conversionUtility.convertPlantVectorToString(plant),"plants.txt")) {
+                if(readAndWrite.writeDataToFile(conversionUtility.convertPlantVectorToString(plant),"Resources/plants.txt")) {
                     std::cout<<"\n\t\tPlant with id #"<<plantId<<" deleted successfully!\n\n";
                 }else {
                 std::cout<<"\nError while deleting plant details...";
@@ -177,14 +177,14 @@ void Administration::searchPlant() {
     std::cout<<"Enter Plant name or location to search OR enter (*) to view all plants: ";
     std::cin>>plantNameOrLoc;
     bool flag = true;
-    string data = readAndWrite.readDataFromFile("plants.txt");
+    string data = readAndWrite.readDataFromFile("Resources/plants.txt");
     vector<Plant> plant = conversionUtility.convertPlantStringToVector(data);
     if(plant.size() > 0) {
         if(plantNameOrLoc == "*") {
             int index = 1;
             flag = false;
             for(auto i = plant.begin(); i != plant.end(); ++i, ++index) {
-                std::cout<<"\t\t" + index << ". Plant Details are as follows:";
+                std::cout<<"\t"<<index<<". Plant Details are as follows:";
                 std::cout<<"\n\t\tPlant Id: "<<i->getPlantId();
                 std::cout<<"\n\t\tPlant Name: "<<i->getPlantName();
                 std::cout<<"\n\t\tPlant Location: "<<i->getPlantLoc();
@@ -216,7 +216,7 @@ void Administration::searchPlant() {
 
 void Administration::viewOrders() {
     system("clear");
-    string data = readAndWrite.readDataFromFile("orders.txt");
+    string data = readAndWrite.readDataFromFile("Resources/orders.txt");
     vector<Order> orders = conversionUtility.convertOrderStringToVector(data);
     std::cout<<"\n\t\t***********************************************";
     std::cout<<"\n\t\t*    Recent Order Details are as follows      *";
@@ -237,7 +237,7 @@ void Administration::viewOrders() {
 
 void Administration::viewRequests() {
     system("clear");
-    string data = readAndWrite.readDataFromFile("clientDetails.txt");
+    string data = readAndWrite.readDataFromFile("Resources/clientDetails.txt");
     vector<Client> clients = conversionUtility.convertClientStringToVector(data);
     if(clients.size()>0) {
         std::cout<<"\n\t\tClient Requests are as follows(if any): ";
@@ -268,7 +268,7 @@ void Administration::approveDenyRequest() {
     int clientID=-1;
     std::cout<<"\n \t\tEnter Client ID : ";
     std::cin>>clientID;
-    string data = readAndWrite.readDataFromFile("clientDetails.txt");
+    string data = readAndWrite.readDataFromFile("Resources/clientDetails.txt");
     vector<Client> clients = conversionUtility.convertClientStringToVector(data);
     int choice=-1;
     for(auto i = clients.begin(); i != clients.end(); ++i) {
@@ -303,7 +303,7 @@ void Administration::approveDenyRequest() {
         std::cout<<"\n\t\tNo request exists with this Id";
     } else if (choice == 1 || choice == 2){
         data = conversionUtility.convertClientVectorToString(clients);
-        if(readAndWrite.writeDataToFile(data, "clientDetails.txt")) {
+        if(readAndWrite.writeDataToFile(data, "Resources/clientDetails.txt")) {
             if(choice == 1) {
                 std::cout<<"\n\t\tClient Request Approved Successfully!";
             } else {

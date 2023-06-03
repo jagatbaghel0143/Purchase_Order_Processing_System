@@ -64,7 +64,7 @@ void User::headLogin(string filename) {
     }
     if(isCredentialsCorrect && changePassword) {
         data = conversionUtility.convertPlantHeadVectorToString(heads);
-        if(readAndWrite.writeDataToFile(data,"plantHeadDetails.txt")) {
+        if(readAndWrite.writeDataToFile(data,"Resources/plantHeadDetails.txt")) {
             std::cout<<"\t\tYour Password changed successfully!\n";
         } else {
             std::cout<<"\t\tError occurred while changing password";
@@ -72,7 +72,7 @@ void User::headLogin(string filename) {
     }
     if(isCredentialsCorrect) {
         data = conversionUtility.convertPlantHeadVectorToString(heads);
-        if(readAndWrite.writeDataToFile(data,"plantHeadDetails.txt")) {
+        if(readAndWrite.writeDataToFile(data,"Resources/plantHeadDetails.txt")) {
             std::cout<<"\t\tCongratulations! Logged into the system successfully!\n";
         } else {
             std::cout<<"\t\tError occurred while logging";
@@ -122,14 +122,14 @@ void User::clientLogin(string filename) {
     }
     if(isCredentialsCorrect && changePassword) {
         data = conversionUtility.convertClientVectorToString(clients);
-        if(readAndWrite.writeDataToFile(data,"clientDetails.txt")) {
+        if(readAndWrite.writeDataToFile(data,"Resources/clientDetails.txt")) {
             std::cout<<"\t\tYou Password changed successfully!\n";
         } else {
             std::cout<<"\t\tError occurred while changing password";
         }
     } else if(isCredentialsCorrect) {
         data = conversionUtility.convertClientVectorToString(clients);
-        if(readAndWrite.writeDataToFile(data,"clientDetails.txt")) {
+        if(readAndWrite.writeDataToFile(data,"Resources/clientDetails.txt")) {
             std::cout<<"\t\tCongratulations!! You have successfully logged into the System!\n";
         } else {
             std::cout<<"\t\tError occurred while logging";
