@@ -1,6 +1,6 @@
 #include <random>
 #include <string>
-#include "RandomStringGenerator.hpp"
+#include "headers/RandomStringGenerator.hpp"
 
 using namespace std;
 

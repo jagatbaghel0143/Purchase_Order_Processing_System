@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include "User.hpp"
-#include "ReadAndWrite.hpp"
-#include "ConversionUtility.hpp"
+#include "headers/User.hpp"
+#include "headers/ReadAndWrite.hpp"
+#include "headers/ConversionUtility.hpp"
 
 using namespace std;
 

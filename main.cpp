@@ -2,11 +2,11 @@
 #include <string>
 #include <cstdlib>
 #include <vector>
-#include "User.hpp"
-#include "Administration.hpp"
-#include "AdministrationHead.hpp"
-#include "ClientManagement.hpp"
-#include "PlantHeadActivity.hpp"
+#include "headers/User.hpp"
+#include "headers/Administration.hpp"
+#include "headers/AdministrationHead.hpp"
+#include "headers/ClientManagement.hpp"
+#include "headers/PlantHeadActivity.hpp"
 
 using namespace std;
 

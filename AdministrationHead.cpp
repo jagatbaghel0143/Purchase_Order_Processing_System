@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "ConversionUtility.hpp"
-#include "ReadAndWrite.hpp"
-#include "AdministrationHead.hpp"
-#include "RandomStringGenerator.hpp"
-#include "PlantHead.hpp"
+#include "headers/ConversionUtility.hpp"
+#include "headers/ReadAndWrite.hpp"
+#include "headers/AdministrationHead.hpp"
+#include "headers/RandomStringGenerator.hpp"
+#include "headers/PlantHead.hpp"
 
 using namespace std;
 
