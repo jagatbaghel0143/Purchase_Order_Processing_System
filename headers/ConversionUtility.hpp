@@ -6,6 +6,7 @@
 #include "PlantHead.hpp"
 #include "Client.hpp"
 #include "Order.hpp"
+#include "Item.hpp"
 
 using namespace std;
 
@@ -19,5 +20,7 @@ class ConversionUtility {
         string convertClientVectorToString(vector<Client> clients);
         vector<Order> convertOrderStringToVector(string data);
         string convertOrderVectorToString(vector<Order> orders);
+        vector<Item> convertItemStringToVector(string data);
+        string convertItemVectorToString(vector<Item> items);
 };
 #endif

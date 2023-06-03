@@ -7,6 +7,7 @@
 #include "headers/PlantHead.hpp"
 #include "headers/Client.hpp"
 #include "headers/Order.hpp"
+#include "headers/Item.hpp"
 
 using namespace std;
 
@@ -133,4 +134,38 @@ vector<Order> ConversionUtility::convertOrderStringToVector(string data) {
         orders.push_back(order);
     }
     return orders;
+}
+
+
+string ConversionUtility::convertItemVectorToString(vector<Item> items) {
+    stringstream ss;
+    for (auto item : items) {
+        ss <<  item.getItemID() << "," <<  item.getItemName() << "," <<  item.getDescription()<<","<<  item.getRawMaterialReq()<<","<< item.getTimeRequired()<<","<<item.getLaborerCount()<<","<<item.getManufacturingCostPerUnit()<<"\n";
+    }
+    return ss.str();
+}
+
+vector<Item> ConversionUtility::convertItemStringToVector(string data) {
+    vector<Item> items;
+    stringstream ss(data);
+    string line;
+    while (getline(ss, line)) {
+        stringstream lineStream(line);
+        int id, time, count, cost;
+        std::string name, desc, material;
+        lineStream >> id;
+        lineStream.ignore();
+        getline(lineStream, name, ',');
+        getline(lineStream, desc, ',');
+        getline(lineStream, material, ',');
+        lineStream >> time;
+        lineStream.ignore();
+        lineStream >> count;
+        lineStream.ignore();
+        lineStream >> cost;
+        lineStream.ignore();
+        Item item(id,name,desc,material,time,count,cost);
+        items.push_back(item);
+    }
+    return items;
 }

@@ -31,11 +31,11 @@ void ClientManagement::addClient() {
     std::cin>>clientNumber;
     clientPassword = randomStringGenerator.generateRandomString(LENGTH) ;
     Client client(clientID, clientNumber, clientName, clientLoc, primaryBusiness, clientPassword, "pending", "false", "false");
-    string data = readAndWrite.readDataFromFile("clientDetails.txt");
+    string data = readAndWrite.readDataFromFile("Resources/clientDetails.txt");
     vector<Client> clients = conversionUtility.convertClientStringToVector(data);
     clients.push_back(client);
     data = conversionUtility.convertClientVectorToString(clients);
-    if(readAndWrite.writeDataToFile(data, "clientDetails.txt")) {
+    if(readAndWrite.writeDataToFile(data, "Resources/clientDetails.txt")) {
         std::cout<<"\n\tNew Plant Head with User ID # "<< clientID <<" and password : " << clientPassword <<" is added successfully!";
         std::cout<<"\n\tPlease Note Your Id and password and you will be able to login after admin approval";
     } else {
@@ -52,7 +52,7 @@ void ClientManagement::updateClient() {
     std::cout<<"\t\tEnter Plant Head ID which you want to update: ";
     std::cin>>plantHeadId;
     bool flag = true, updateStatus = false;
-    string data = readAndWrite.readDataFromFile("clientDetails.txt");
+    string data = readAndWrite.readDataFromFile("Resources/clientDetails.txt");
     vector<PlantHead> plantHeads = conversionUtility.convertPlantHeadStringToVector(data);
     for(auto i = plantHeads.begin(); i != plantHeads.end(); ++i) {
         if(i->getPlantHeadId() == plantHeadId) {
@@ -84,7 +84,7 @@ void ClientManagement::updateClient() {
                 }
             }
             if(updateStatus) {
-                if(readAndWrite.writeDataToFile(conversionUtility.convertPlantHeadVectorToString(plantHeads), "plantHeadDetails.txt")) {
+                if(readAndWrite.writeDataToFile(conversionUtility.convertPlantHeadVectorToString(plantHeads), "Resources/plantHeadDetails.txt")) {
                     std::cout<<"\n\t\tPlant details updated successfully!\n\n";
                 }else {
                 std::cout<<"\nError while updating plant details...";
@@ -106,7 +106,7 @@ void ClientManagement::deleteClient() {
     std::cout<<"Enter Plant Head ID which you want to delete: ";
     std::cin>>plantId;
     bool flag = true, updateStatus = false;
-    string data = readAndWrite.readDataFromFile("clientDetails.txt");
+    string data = readAndWrite.readDataFromFile("Resources/clientDetails.txt");
     vector<PlantHead> plantHeads = conversionUtility.convertPlantHeadStringToVector(data);
     for(auto i = plantHeads.begin(); i != plantHeads.end(); ++i) {
         if(i->getPlantHeadId() == plantId) {
@@ -134,7 +134,7 @@ void ClientManagement::deleteClient() {
                 updateStatus = true;
             }
             if(updateStatus) {
-                if(readAndWrite.writeDataToFile(conversionUtility.convertPlantHeadVectorToString(plantHeads), "plantHeadDetails.txt")) {
+                if(readAndWrite.writeDataToFile(conversionUtility.convertPlantHeadVectorToString(plantHeads), "Resources/plantHeadDetails.txt")) {
                     std::cout<<"\n\t\tPlant with id #"<<plantId<<" deleted successfully!\n\n";
                 }else {
                 std::cout<<"\nError while deleting plant details...";
@@ -156,7 +156,7 @@ void ClientManagement::checkStatus() {
     int clientID=-1;
     std::cout<<"\n \t\tEnter Client ID : ";
     std::cin>>clientID;
-    string data = readAndWrite.readDataFromFile("clientDetails.txt");
+    string data = readAndWrite.readDataFromFile("Resources/clientDetails.txt");
     vector<Client> clients = conversionUtility.convertClientStringToVector(data);
     for(auto i = clients.begin(); i != clients.end(); ++i) {
         if(to_string(clientID) == to_string(i->getClientID())) {
@@ -222,11 +222,11 @@ void ClientManagement::generateOrder() {
     std::cin>>quantity;
     std::cout<<"\t\t\t-------------------------------------------";
     Order order(cID, orderid, pName, quantity, "pending");
-    string data = readAndWrite.readDataFromFile("orders.txt");
+    string data = readAndWrite.readDataFromFile("Resources/orders.txt");
     vector<Order> orders = conversionUtility.convertOrderStringToVector(data);
     orders.push_back(order);
     data = conversionUtility.convertOrderVectorToString(orders);
-    if(readAndWrite.writeDataToFile(data, "orders.txt")) {
+    if(readAndWrite.writeDataToFile(data, "Resources/orders.txt")) {
         std::cout<<"\n\t\tYour order with orderid #" << orderid <<" is successfully placed!";
     } else {
         std::cout<<"\n\t\tError while placing your order";
@@ -243,7 +243,7 @@ void ClientManagement::viewOrder() {
     std::cout<<"\t\tEnter Order ID : ";
     std::cin>>orderID;
     bool flag = true;
-    string data = readAndWrite.readDataFromFile("orders.txt");
+    string data = readAndWrite.readDataFromFile("Resources/orders.txt");
     vector<Order> orders = conversionUtility.convertOrderStringToVector(data);
     for(auto i = orders.begin(); i != orders.end(); ++i) {
         if(i->getOrderID() == orderID) {
